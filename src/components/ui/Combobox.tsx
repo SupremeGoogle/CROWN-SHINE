@@ -20,9 +20,15 @@ export function Combobox({
 }) {
   const [query, setQuery] = useState(value);
   const [open, setOpen] = useState(false);
+  const [syncedValue, setSyncedValue] = useState(value);
   const rootRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => setQuery(value), [value]);
+  // Keep the input text in sync when `value` changes from outside (e.g. parent
+  // resets the field) — adjusting state during render instead of in an effect.
+  if (value !== syncedValue) {
+    setSyncedValue(value);
+    setQuery(value);
+  }
 
   useEffect(() => {
     function onClickOutside(e: MouseEvent) {

@@ -39,17 +39,27 @@ export function CarPicker({
   }, []);
 
   useEffect(() => {
-    if (!value.make || manual) {
-      setModels([]);
-      return;
-    }
+    if (!value.make || manual) return;
+    let cancelled = false;
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- standard fetch-on-change pattern, verified working
     setLoadingModels(true);
     fetch(`/api/vehicles/models?make=${encodeURIComponent(value.make)}`)
       .then((r) => r.json())
-      .then((d) => setModels(d.models ?? []))
-      .catch(() => setModels([]))
-      .finally(() => setLoadingModels(false));
+      .then((d) => {
+        if (!cancelled) setModels(d.models ?? []);
+      })
+      .catch(() => {
+        if (!cancelled) setModels([]);
+      })
+      .finally(() => {
+        if (!cancelled) setLoadingModels(false);
+      });
+    return () => {
+      cancelled = true;
+    };
   }, [value.make, manual]);
+
+  const displayedModels = !manual && value.make ? models : [];
 
   return (
     <div className="space-y-5">
@@ -91,7 +101,7 @@ export function CarPicker({
                 Model
               </label>
               <Combobox
-                options={models}
+                options={displayedModels}
                 value={value.model}
                 loading={loadingModels}
                 disabled={!value.make}

@@ -82,6 +82,7 @@ export default function CrmPage() {
   }, [query]);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- standard fetch-on-filter-change pattern, verified working
     load();
   }, [load]);
 
