@@ -1,0 +1,67 @@
+// Prisma schema for Crown Shine Mobile Detailing
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum BookingStatus {
+  NEW
+  CONFIRMED
+  COMPLETED
+  CANCELLED
+}
+
+enum CarSource {
+  CATALOG
+  MANUAL
+}
+
+model Booking {
+  id        String        @id @default(cuid())
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+  status    BookingStatus @default(NEW)
+
+  // customer
+  customerName String
+  phone        String
+  email        String
+
+  // vehicle
+  carMake   String
+  carModel  String
+  carYear   String?
+  carSource CarSource @default(CATALOG)
+
+  // service
+  serviceName String
+  notes       String?
+
+  // location & schedule
+  address        String
+  city           String
+  preferredDate  DateTime
+  preferredTime  String
+
+  // consent
+  marketingEmailConsent Boolean @default(false)
+  marketingSmsConsent   Boolean @default(false)
+
+  @@index([preferredDate])
+  @@index([status])
+  @@index([createdAt])
+}
+
+model TelegramAdmin {
+  id           String   @id @default(cuid())
+  chatId       String   @unique
+  username     String?
+  firstName    String?
+  registeredAt DateTime @default(now())
+  active       Boolean  @default(true)
+}
