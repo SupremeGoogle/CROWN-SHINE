@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { WHY_US_ICONS } from "@/types/site-content";
 
 export const servicePackageSchema = z.object({
   id: z.string().trim().min(1).max(60),
@@ -46,6 +47,43 @@ export const siteContentSchema = z.object({
       })
     )
     .max(30),
+  gallery: z.object({
+    title: z.string().trim().min(1).max(200),
+    subtitle: z.string().trim().min(1).max(400),
+    items: z
+      .array(
+        z.object({
+          id: z.string().trim().min(1).max(60),
+          caption: z.string().trim().min(1).max(150),
+          tag: z.string().trim().min(1).max(60),
+          image: z.string().trim().max(500).optional().or(z.literal("")),
+        })
+      )
+      .max(24),
+  }),
+  whyUs: z.object({
+    title: z.string().trim().min(1).max(200),
+    items: z
+      .array(
+        z.object({
+          icon: z.enum(WHY_US_ICONS),
+          title: z.string().trim().min(1).max(100),
+          description: z.string().trim().min(1).max(300),
+        })
+      )
+      .max(12),
+  }),
+  faq: z.object({
+    title: z.string().trim().min(1).max(200),
+    items: z
+      .array(
+        z.object({
+          question: z.string().trim().min(1).max(200),
+          answer: z.string().trim().min(1).max(1000),
+        })
+      )
+      .max(20),
+  }),
   contact: z.object({
     phone: z.string().trim().min(1).max(30),
     email: z.string().trim().email().max(200),

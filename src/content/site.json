@@ -121,6 +121,82 @@
       "rating": 5
     }
   ],
+  "gallery": {
+    "title": "Our Work",
+    "subtitle": "A glimpse of the crown-level shine we bring to every vehicle.",
+    "items": [
+      { "id": "gallery-1", "caption": "Signature Detail", "tag": "Tesla Model S" },
+      { "id": "gallery-2", "caption": "Ceramic Coating", "tag": "Porsche 911" },
+      { "id": "gallery-3", "caption": "Full Royal Detail", "tag": "Range Rover Sport" },
+      { "id": "gallery-4", "caption": "Interior Deep Clean", "tag": "BMW M4" },
+      { "id": "gallery-5", "caption": "Express Shine", "tag": "Audi A6" },
+      { "id": "gallery-6", "caption": "Paint Correction", "tag": "Mercedes-AMG GT" }
+    ]
+  },
+  "whyUs": {
+    "title": "Why Crown Shine",
+    "items": [
+      {
+        "icon": "map-pin",
+        "title": "We Come To You",
+        "description": "Full mobile setup — we bring everything to your home, office, or garage."
+      },
+      {
+        "icon": "shield",
+        "title": "Fully Insured",
+        "description": "Licensed and insured for total peace of mind on every job."
+      },
+      {
+        "icon": "leaf",
+        "title": "Eco-Friendly Products",
+        "description": "Premium, biodegradable products that are tough on grime, gentle on your car."
+      },
+      {
+        "icon": "thumbs-up",
+        "title": "Satisfaction Guaranteed",
+        "description": "Not happy with the shine? We'll make it right, every time."
+      },
+      {
+        "icon": "calendar-clock",
+        "title": "Flexible Scheduling",
+        "description": "Evenings and weekends available to fit your busy schedule."
+      },
+      {
+        "icon": "star",
+        "title": "5-Star Rated",
+        "description": "Trusted by hundreds of drivers across the Greater Seattle area."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "items": [
+      {
+        "question": "Do I need to provide water or electricity?",
+        "answer": "No — our mobile units are fully self-contained with their own water and power, so we can detail your car virtually anywhere."
+      },
+      {
+        "question": "How long does a detail take?",
+        "answer": "Most appointments run 1–5 hours depending on the package and your vehicle's size and condition. Exact durations are listed with each package."
+      },
+      {
+        "question": "What payment methods do you accept?",
+        "answer": "We currently accept payment in person after your service is complete — cash, card, or contactless tap are all welcome."
+      },
+      {
+        "question": "How far in advance should I book?",
+        "answer": "We recommend booking a few days ahead, especially for weekend slots, but we'll always do our best to accommodate last-minute requests."
+      },
+      {
+        "question": "What if it's raining on my appointment day?",
+        "answer": "Light rain isn't a problem for interior details or garage/covered locations. For exterior work in heavy rain, we'll reach out to reschedule at no extra cost."
+      },
+      {
+        "question": "Do you offer packages for multiple vehicles or fleets?",
+        "answer": "Yes! Contact us directly and we'll put together a custom quote for multiple vehicles or recurring fleet service."
+      }
+    ]
+  },
   "contact": {
     "phone": "253-378-8086",
     "email": "info@crownshinemobiledetailing.com",

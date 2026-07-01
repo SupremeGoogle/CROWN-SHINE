@@ -8,6 +8,7 @@ import { Menu, X } from "lucide-react";
 
 const links = [
   { href: "/#services", label: "Services" },
+  { href: "/#gallery", label: "Gallery" },
   { href: "/#about", label: "About" },
   { href: "/#area", label: "Service Area" },
   { href: "/#reviews", label: "Reviews" },
@@ -39,7 +40,7 @@ export function Navbar() {
           </span>
         </Link>
 
-        <div className="hidden items-center gap-8 md:flex">
+        <div className="hidden items-center gap-6 lg:flex">
           {links.map((l) => (
             <Link
               key={l.href}
@@ -51,14 +52,14 @@ export function Navbar() {
           ))}
         </div>
 
-        <div className="hidden md:block">
+        <div className="hidden lg:block">
           <ButtonLink href="/book" className="!py-2.5 !px-6 text-xs">
             Book Now
           </ButtonLink>
         </div>
 
         <button
-          className="text-cream md:hidden"
+          className="text-cream lg:hidden"
           onClick={() => setOpen((o) => !o)}
           aria-label="Toggle menu"
         >
@@ -67,7 +68,7 @@ export function Navbar() {
       </nav>
 
       {open && (
-        <div className="glass-panel-strong mx-4 mb-4 flex flex-col gap-4 rounded-2xl p-6 md:hidden">
+        <div className="glass-panel-strong mx-4 mb-4 flex flex-col gap-4 rounded-2xl p-6 lg:hidden">
           {links.map((l) => (
             <Link
               key={l.href}

@@ -4,15 +4,19 @@ import { useEffect, useState } from "react";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { Button } from "@/components/ui/Button";
 import { Field, TextInput, TextArea, RemoveButton, AddButton } from "@/components/admin/fields";
-import type { SiteContent, ServicePackage } from "@/types/site-content";
+import type { SiteContent, ServicePackage, WhyUsIcon } from "@/types/site-content";
+import { WHY_US_ICONS } from "@/types/site-content";
 import { Check, AlertCircle } from "lucide-react";
 
 const TABS = [
   "Hero",
   "About",
   "Services",
+  "Gallery",
+  "Why Us",
   "Service Area",
   "Testimonials",
+  "FAQ",
   "Contact",
 ] as const;
 
@@ -241,6 +245,166 @@ export function ContentEditor() {
           </div>
         )}
 
+        {tab === "Gallery" && (
+          <div className="space-y-6">
+            <Field label="Title">
+              <TextInput
+                value={content.gallery.title}
+                onChange={(v) => setContent({ ...content, gallery: { ...content.gallery, title: v } })}
+              />
+            </Field>
+            <Field label="Subtitle">
+              <TextArea
+                value={content.gallery.subtitle}
+                onChange={(v) =>
+                  setContent({ ...content, gallery: { ...content.gallery, subtitle: v } })
+                }
+              />
+            </Field>
+            <div className="space-y-4">
+              {content.gallery.items.map((item, i) => (
+                <div key={item.id} className="rounded-xl border border-gold/15 p-5">
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    <Field label="Caption (e.g. Signature Detail)">
+                      <TextInput
+                        value={item.caption}
+                        onChange={(v) => {
+                          const items = [...content.gallery.items];
+                          items[i] = { ...items[i], caption: v };
+                          setContent({ ...content, gallery: { ...content.gallery, items } });
+                        }}
+                      />
+                    </Field>
+                    <Field label="Tag (e.g. Tesla Model S)">
+                      <TextInput
+                        value={item.tag}
+                        onChange={(v) => {
+                          const items = [...content.gallery.items];
+                          items[i] = { ...items[i], tag: v };
+                          setContent({ ...content, gallery: { ...content.gallery, items } });
+                        }}
+                      />
+                    </Field>
+                    <Field label="Photo URL (optional — leave blank to show a placeholder)" className="sm:col-span-2">
+                      <TextInput
+                        value={item.image ?? ""}
+                        placeholder="https://..."
+                        onChange={(v) => {
+                          const items = [...content.gallery.items];
+                          items[i] = { ...items[i], image: v };
+                          setContent({ ...content, gallery: { ...content.gallery, items } });
+                        }}
+                      />
+                    </Field>
+                  </div>
+                  <div className="mt-4">
+                    <RemoveButton
+                      onClick={() => {
+                        const items = content.gallery.items.filter((_, idx) => idx !== i);
+                        setContent({ ...content, gallery: { ...content.gallery, items } });
+                      }}
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+            <AddButton
+              label="Add Photo"
+              onClick={() =>
+                setContent({
+                  ...content,
+                  gallery: {
+                    ...content.gallery,
+                    items: [
+                      ...content.gallery.items,
+                      { id: `gallery-${Date.now()}`, caption: "", tag: "", image: "" },
+                    ],
+                  },
+                })
+              }
+            />
+          </div>
+        )}
+
+        {tab === "Why Us" && (
+          <div className="space-y-6">
+            <Field label="Title">
+              <TextInput
+                value={content.whyUs.title}
+                onChange={(v) => setContent({ ...content, whyUs: { ...content.whyUs, title: v } })}
+              />
+            </Field>
+            <div className="space-y-4">
+              {content.whyUs.items.map((item, i) => (
+                <div key={i} className="rounded-xl border border-gold/15 p-5">
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    <Field label="Icon">
+                      <select
+                        value={item.icon}
+                        onChange={(e) => {
+                          const items = [...content.whyUs.items];
+                          items[i] = { ...items[i], icon: e.target.value as WhyUsIcon };
+                          setContent({ ...content, whyUs: { ...content.whyUs, items } });
+                        }}
+                        className="w-full rounded-lg border border-gold/25 bg-ink-soft/60 px-3 py-2.5 text-sm text-cream outline-none focus:border-gold/60"
+                      >
+                        {WHY_US_ICONS.map((icon) => (
+                          <option key={icon} value={icon}>
+                            {icon}
+                          </option>
+                        ))}
+                      </select>
+                    </Field>
+                    <Field label="Title">
+                      <TextInput
+                        value={item.title}
+                        onChange={(v) => {
+                          const items = [...content.whyUs.items];
+                          items[i] = { ...items[i], title: v };
+                          setContent({ ...content, whyUs: { ...content.whyUs, items } });
+                        }}
+                      />
+                    </Field>
+                    <Field label="Description" className="sm:col-span-2">
+                      <TextArea
+                        value={item.description}
+                        onChange={(v) => {
+                          const items = [...content.whyUs.items];
+                          items[i] = { ...items[i], description: v };
+                          setContent({ ...content, whyUs: { ...content.whyUs, items } });
+                        }}
+                      />
+                    </Field>
+                  </div>
+                  <div className="mt-4">
+                    <RemoveButton
+                      onClick={() => {
+                        const items = content.whyUs.items.filter((_, idx) => idx !== i);
+                        setContent({ ...content, whyUs: { ...content.whyUs, items } });
+                      }}
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+            <AddButton
+              label="Add Reason"
+              onClick={() =>
+                setContent({
+                  ...content,
+                  whyUs: {
+                    ...content.whyUs,
+                    items: [
+                      ...content.whyUs.items,
+                      { icon: "star", title: "", description: "" },
+                    ],
+                  },
+                })
+              }
+            />
+          </div>
+        )}
+
         {tab === "Service Area" && (
           <div className="space-y-6">
             <Field label="Title">
@@ -374,6 +538,65 @@ export function ContentEditor() {
                     ...content.testimonials,
                     { name: "", car: "", quote: "", rating: 5 },
                   ],
+                })
+              }
+            />
+          </div>
+        )}
+
+        {tab === "FAQ" && (
+          <div className="space-y-6">
+            <Field label="Title">
+              <TextInput
+                value={content.faq.title}
+                onChange={(v) => setContent({ ...content, faq: { ...content.faq, title: v } })}
+              />
+            </Field>
+            <div className="space-y-4">
+              {content.faq.items.map((item, i) => (
+                <div key={i} className="rounded-xl border border-gold/15 p-5">
+                  <Field label="Question">
+                    <TextInput
+                      value={item.question}
+                      onChange={(v) => {
+                        const items = [...content.faq.items];
+                        items[i] = { ...items[i], question: v };
+                        setContent({ ...content, faq: { ...content.faq, items } });
+                      }}
+                    />
+                  </Field>
+                  <div className="mt-4">
+                    <Field label="Answer">
+                      <TextArea
+                        value={item.answer}
+                        onChange={(v) => {
+                          const items = [...content.faq.items];
+                          items[i] = { ...items[i], answer: v };
+                          setContent({ ...content, faq: { ...content.faq, items } });
+                        }}
+                      />
+                    </Field>
+                  </div>
+                  <div className="mt-4">
+                    <RemoveButton
+                      onClick={() => {
+                        const items = content.faq.items.filter((_, idx) => idx !== i);
+                        setContent({ ...content, faq: { ...content.faq, items } });
+                      }}
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+            <AddButton
+              label="Add Question"
+              onClick={() =>
+                setContent({
+                  ...content,
+                  faq: {
+                    ...content.faq,
+                    items: [...content.faq.items, { question: "", answer: "" }],
+                  },
                 })
               }
             />

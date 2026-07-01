@@ -1,3 +1,16 @@
+export const WHY_US_ICONS = [
+  "shield",
+  "leaf",
+  "map-pin",
+  "thumbs-up",
+  "calendar-clock",
+  "star",
+  "sparkles",
+  "clock",
+] as const;
+
+export type WhyUsIcon = (typeof WHY_US_ICONS)[number];
+
 export interface ServicePackage {
   id: string;
   name: string;
@@ -28,6 +41,19 @@ export interface SiteContent {
     cities: string[];
   };
   testimonials: { name: string; car: string; quote: string; rating: number }[];
+  gallery: {
+    title: string;
+    subtitle: string;
+    items: { id: string; caption: string; tag: string; image?: string }[];
+  };
+  whyUs: {
+    title: string;
+    items: { icon: WhyUsIcon; title: string; description: string }[];
+  };
+  faq: {
+    title: string;
+    items: { question: string; answer: string }[];
+  };
   contact: {
     phone: string;
     email: string;
