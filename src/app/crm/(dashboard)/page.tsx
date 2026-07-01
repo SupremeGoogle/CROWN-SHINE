@@ -108,7 +108,7 @@ export default function CrmPage() {
 
   return (
     <div>
-      <div className="mb-8 flex items-center justify-between">
+      <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
         <div>
           <h1 className="font-display text-3xl">
             Bookings <span className="text-gold-gradient">CRM</span>

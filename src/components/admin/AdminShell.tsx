@@ -7,8 +7,8 @@ import { LogOut } from "lucide-react";
 import type { ReactNode } from "react";
 
 const NAV = [
-  { href: "/admin", label: "Site Content" },
-  { href: "/crm", label: "CRM / Bookings" },
+  { href: "/admin", label: "Site Content", shortLabel: "Content" },
+  { href: "/crm", label: "CRM / Bookings", shortLabel: "CRM" },
 ];
 
 export function AdminShell({ children }: { children: ReactNode }) {
@@ -23,11 +23,11 @@ export function AdminShell({ children }: { children: ReactNode }) {
 
   return (
     <div className="min-h-screen bg-ink text-cream">
-      <header className="glass-panel-strong sticky top-0 z-40 flex items-center justify-between px-6 py-4">
-        <div className="flex items-center gap-8">
+      <header className="glass-panel-strong sticky top-0 z-40 flex flex-wrap items-center justify-between gap-3 px-4 py-3 sm:px-6 sm:py-4">
+        <div className="flex items-center gap-3 sm:gap-8">
           <div className="flex items-center gap-2">
-            <CrownIcon className="h-6 w-8 text-gold" />
-            <span className="font-display text-sm tracking-widest">
+            <CrownIcon className="h-6 w-8 shrink-0 text-gold" />
+            <span className="hidden font-display text-sm tracking-widest sm:inline">
               CROWN <span className="text-gold-gradient">SHINE</span>
             </span>
           </div>
@@ -38,13 +38,14 @@ export function AdminShell({ children }: { children: ReactNode }) {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`rounded-full px-4 py-1.5 text-sm transition ${
+                  className={`whitespace-nowrap rounded-full px-3 py-1.5 text-xs transition sm:px-4 sm:text-sm ${
                     active
                       ? "bg-gold text-ink font-semibold"
                       : "text-cream/70 hover:text-gold"
                   }`}
                 >
-                  {item.label}
+                  <span className="sm:hidden">{item.shortLabel}</span>
+                  <span className="hidden sm:inline">{item.label}</span>
                 </Link>
               );
             })}
@@ -52,12 +53,12 @@ export function AdminShell({ children }: { children: ReactNode }) {
         </div>
         <button
           onClick={handleLogout}
-          className="flex items-center gap-2 text-sm text-cream/60 hover:text-gold"
+          className="flex shrink-0 items-center gap-2 text-sm text-cream/60 hover:text-gold"
         >
-          <LogOut size={16} /> Logout
+          <LogOut size={16} /> <span className="hidden sm:inline">Logout</span>
         </button>
       </header>
-      <main className="mx-auto max-w-7xl px-6 py-10">{children}</main>
+      <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-10">{children}</main>
     </div>
   );
 }
