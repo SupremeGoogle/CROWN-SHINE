@@ -154,6 +154,7 @@ export default function CrmPage() {
             <FilterField label="From">
               <input
                 type="date"
+                lang="en-US"
                 value={customFrom}
                 onChange={(e) => setCustomFrom(e.target.value)}
                 className={`${selectClass} [color-scheme:dark]`}
@@ -162,6 +163,7 @@ export default function CrmPage() {
             <FilterField label="To">
               <input
                 type="date"
+                lang="en-US"
                 value={customTo}
                 onChange={(e) => setCustomTo(e.target.value)}
                 className={`${selectClass} [color-scheme:dark]`}

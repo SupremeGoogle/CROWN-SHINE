@@ -1,3 +1,8 @@
+"use client";
+
+import { useRef } from "react";
+import { CalendarDays } from "lucide-react";
+
 const TIME_SLOTS = [
   "8:00 AM",
   "9:00 AM",
@@ -17,6 +22,17 @@ function todayIso() {
   return d.toISOString().slice(0, 10);
 }
 
+function formatDateEn(iso: string) {
+  if (!iso) return "";
+  const d = new Date(iso + "T00:00:00");
+  return d.toLocaleDateString("en-US", {
+    weekday: "short",
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  });
+}
+
 export function StepSchedule({
   date,
   time,
@@ -29,6 +45,21 @@ export function StepSchedule({
   onTimeChange: (time: string) => void;
 }) {
   const isSunday = date ? new Date(date + "T00:00:00").getDay() === 0 : false;
+  const dateInputRef = useRef<HTMLInputElement>(null);
+
+  function openPicker() {
+    const input = dateInputRef.current;
+    if (!input) return;
+    if ("showPicker" in input) {
+      try {
+        (input as HTMLInputElement & { showPicker: () => void }).showPicker();
+        return;
+      } catch {
+        // fall through to focus
+      }
+    }
+    input.focus();
+  }
 
   return (
     <div>
@@ -41,13 +72,29 @@ export function StepSchedule({
         <label className="mb-2 block text-xs font-semibold uppercase tracking-widest text-gold">
           Date
         </label>
-        <input
-          type="date"
-          min={todayIso()}
-          value={date}
-          onChange={(e) => onDateChange(e.target.value)}
-          className="w-full rounded-xl border border-gold/25 bg-ink-soft/60 px-4 py-3 text-sm text-cream outline-none focus:border-gold/60 [color-scheme:dark]"
-        />
+        <div className="relative">
+          <button
+            type="button"
+            onClick={openPicker}
+            className="flex w-full items-center justify-between rounded-xl border border-gold/25 bg-ink-soft/60 px-4 py-3 text-left text-sm text-cream outline-none focus:border-gold/60"
+          >
+            <span className={date ? "text-cream" : "text-cream/35"}>
+              {date ? formatDateEn(date) : "Select a date"}
+            </span>
+            <CalendarDays size={16} className="text-gold/70" />
+          </button>
+          <input
+            ref={dateInputRef}
+            type="date"
+            lang="en-US"
+            min={todayIso()}
+            value={date}
+            onChange={(e) => onDateChange(e.target.value)}
+            tabIndex={-1}
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 opacity-0"
+          />
+        </div>
         {isSunday && (
           <p className="mt-2 text-xs text-amber-400">
             We&apos;re closed on Sundays — please pick another day.

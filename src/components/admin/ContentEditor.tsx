@@ -44,7 +44,7 @@ export function ContentEditor() {
         const data = await res.json().catch(() => ({}));
         throw new Error(data.error ?? "Failed to save");
       }
-      setMessage({ type: "ok", text: "Saved and committed to GitHub. Live in ~1 minute." });
+      setMessage({ type: "ok", text: "Saved. Your website will update in ~1 minute." });
     } catch (e) {
       setMessage({ type: "error", text: e instanceof Error ? e.message : "Failed to save" });
     } finally {
@@ -63,7 +63,7 @@ export function ContentEditor() {
             Site <span className="text-gold-gradient">Content</span>
           </h1>
           <p className="mt-1 text-sm text-cream/55">
-            Changes are committed directly to the GitHub repository.
+            Edit any part of your website below, then save to publish changes.
           </p>
         </div>
         <div className="flex items-center gap-3">
