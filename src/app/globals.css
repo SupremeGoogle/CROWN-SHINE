@@ -152,3 +152,24 @@ body {
     padding: 0 !important;
   }
 }
+
+/* Горизонтальная карусель для карточек на мобильных экранах.
+   Строго ограничено max-width, чтобы не конфликтовать с Tailwind sm:-классами. */
+@media (max-width: 639px) {
+  .carousel-mobile {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-bottom: 0.5rem;
+    scrollbar-width: none;
+  }
+  .carousel-mobile::-webkit-scrollbar {
+    display: none;
+  }
+}

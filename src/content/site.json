@@ -125,12 +125,42 @@
     "title": "Our Work",
     "subtitle": "A glimpse of the crown-level shine we bring to every vehicle.",
     "items": [
-      { "id": "gallery-1", "caption": "Signature Detail", "tag": "Tesla Model S" },
-      { "id": "gallery-2", "caption": "Ceramic Coating", "tag": "Porsche 911" },
-      { "id": "gallery-3", "caption": "Full Royal Detail", "tag": "Range Rover Sport" },
-      { "id": "gallery-4", "caption": "Interior Deep Clean", "tag": "BMW M4" },
-      { "id": "gallery-5", "caption": "Express Shine", "tag": "Audi A6" },
-      { "id": "gallery-6", "caption": "Paint Correction", "tag": "Mercedes-AMG GT" }
+      {
+        "id": "gallery-1",
+        "caption": "Hand Wax & Polish",
+        "tag": "Signature Detail",
+        "image": "https://images.unsplash.com/photo-1632823469850-2f77dd9c7f93?fm=jpg&q=80&w=1200&auto=format&fit=crop"
+      },
+      {
+        "id": "gallery-2",
+        "caption": "Ceramic Coating",
+        "tag": "Porsche 911",
+        "image": "https://images.unsplash.com/photo-1620891549027-942fdc95d3f5?fm=jpg&q=80&w=1200&auto=format&fit=crop"
+      },
+      {
+        "id": "gallery-3",
+        "caption": "Full Royal Detail",
+        "tag": "Showroom Finish",
+        "image": "https://images.unsplash.com/photo-1508974239320-0a029497e820?fm=jpg&q=80&w=1200&auto=format&fit=crop"
+      },
+      {
+        "id": "gallery-4",
+        "caption": "Interior Deep Clean",
+        "tag": "Mercedes-AMG",
+        "image": "https://images.unsplash.com/photo-1605437241278-c1806d14a4d9?fm=jpg&q=80&w=1200&auto=format&fit=crop"
+      },
+      {
+        "id": "gallery-5",
+        "caption": "Express Shine",
+        "tag": "Hand Wash",
+        "image": "https://images.unsplash.com/photo-1694678505383-676d78ea3b96?fm=jpg&q=80&w=1200&auto=format&fit=crop"
+      },
+      {
+        "id": "gallery-6",
+        "caption": "Paint Correction",
+        "tag": "Audi R8",
+        "image": "https://images.unsplash.com/photo-1567808291548-fc3ee04dbcf0?fm=jpg&q=80&w=1200&auto=format&fit=crop"
+      }
     ]
   },
   "whyUs": {

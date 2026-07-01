@@ -1,15 +1,8 @@
 "use client";
 
-import { useEffect } from "react";
 import { Printer } from "lucide-react";
 
-export function PrintTrigger({ autoPrint = true }: { autoPrint?: boolean }) {
-  useEffect(() => {
-    if (!autoPrint) return;
-    const t = setTimeout(() => window.print(), 400);
-    return () => clearTimeout(t);
-  }, [autoPrint]);
-
+export function PrintTrigger() {
   return (
     <button
       type="button"

@@ -21,31 +21,40 @@ type CrownSpec = {
   opacity: number;
 };
 
-function generateCrowns(count: number, seed: number): CrownSpec[] {
+// Разбивает холст на сетку ячеек и кладёт по одной короне в случайную точку
+// внутри каждой ячейки — так короны не скучиваются в одном месте и не
+// перекрывают друг друга слишком сильно.
+function generateCrowns(
+  cols: number,
+  rows: number,
+  seed: number,
+  sizeRange: [number, number]
+): CrownSpec[] {
   const rand = mulberry32(seed);
   const crowns: CrownSpec[] = [];
-  for (let i = 0; i < count; i++) {
-    crowns.push({
-      top: rand() * 100,
-      left: rand() * 100,
-      size: 18 + rand() * 46,
-      rotate: rand() * 60 - 30,
-      opacity: 0.05 + rand() * 0.16,
-    });
+  const cellW = 100 / cols;
+  const cellH = 100 / rows;
+  for (let row = 0; row < rows; row++) {
+    for (let col = 0; col < cols; col++) {
+      crowns.push({
+        top: row * cellH + rand() * cellH * 0.7,
+        left: col * cellW + rand() * cellW * 0.7,
+        size: sizeRange[0] + rand() * (sizeRange[1] - sizeRange[0]),
+        rotate: rand() * 60 - 30,
+        opacity: 0.05 + rand() * 0.16,
+      });
+    }
   }
   return crowns;
 }
 
-const CROWNS = generateCrowns(70, 1337);
+const DESKTOP_CROWNS = generateCrowns(9, 8, 1337, [18, 46]);
+const MOBILE_CROWNS = generateCrowns(3, 8, 4242, [16, 30]);
 
-/** Фон с хаотично разбросанными коронами, как на визитке Crown Shine. */
-export function CrownPattern({ className }: { className?: string }) {
+function CrownLayer({ crowns }: { crowns: CrownSpec[] }) {
   return (
-    <div
-      aria-hidden
-      className={`pointer-events-none absolute inset-0 overflow-hidden ${className ?? ""}`}
-    >
-      {CROWNS.map((c, i) => (
+    <>
+      {crowns.map((c, i) => (
         <CrownIcon
           key={i}
           className="absolute text-gold"
@@ -61,6 +70,23 @@ export function CrownPattern({ className }: { className?: string }) {
           }
         />
       ))}
+    </>
+  );
+}
+
+/** Фон с хаотично разбросанными коронами, как на визитке Crown Shine. */
+export function CrownPattern({ className }: { className?: string }) {
+  return (
+    <div
+      aria-hidden
+      className={`pointer-events-none absolute inset-0 overflow-hidden ${className ?? ""}`}
+    >
+      <div className="sm:hidden">
+        <CrownLayer crowns={MOBILE_CROWNS} />
+      </div>
+      <div className="hidden sm:block">
+        <CrownLayer crowns={DESKTOP_CROWNS} />
+      </div>
     </div>
   );
 }

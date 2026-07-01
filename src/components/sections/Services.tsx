@@ -26,7 +26,7 @@ export function Services({ services }: { services: ServicePackage[] }) {
           </p>
         </motion.div>
 
-        <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="carousel-mobile mt-16 sm:grid sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
           {services.map((s, i) => (
             <motion.div
               key={s.id}
@@ -34,7 +34,7 @@ export function Services({ services }: { services: ServicePackage[] }) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.08 }}
-              className="h-full"
+              className="h-full w-[80%] shrink-0 snap-center sm:w-auto"
             >
               <GlassCard
                 strong={s.highlighted}

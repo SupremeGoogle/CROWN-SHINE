@@ -27,7 +27,7 @@ export function Gallery({ gallery }: { gallery: SiteContent["gallery"] }) {
           <p className="mt-4 text-cream/70">{gallery.subtitle}</p>
         </motion.div>
 
-        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="carousel-mobile mt-14 sm:grid sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
           {gallery.items.map((item, i) => (
             <motion.div
               key={item.id}
@@ -35,7 +35,7 @@ export function Gallery({ gallery }: { gallery: SiteContent["gallery"] }) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.06 }}
-              className="group relative aspect-[4/3] overflow-hidden rounded-2xl border border-gold/15"
+              className="group relative aspect-[4/3] w-[80%] shrink-0 snap-center overflow-hidden rounded-2xl border border-gold/15 sm:w-auto"
             >
               {item.image ? (
                 // eslint-disable-next-line @next/next/no-img-element -- admin-supplied URLs may be from any host
