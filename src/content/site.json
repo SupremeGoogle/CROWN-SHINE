@@ -1,0 +1,122 @@
+{
+  "hero": {
+    "eyebrow": "Luxury Mobile Detailing",
+    "title": "Your Crown Deserves to Shine",
+    "subtitle": "Premium mobile car detailing that comes to you — anywhere in Seattle, Bellevue, Kirkland, Redmond, Issaquah and nearby cities.",
+    "ctaLabel": "Book Your Detail",
+    "secondaryCtaLabel": "View Services"
+  },
+  "about": {
+    "title": "Detailing Fit for Royalty",
+    "body": "Crown Shine Mobile Detailing brings a five-star detailing experience directly to your driveway, office, or garage. Every vehicle is treated with meticulous care, premium products, and an obsession for the finest details — because your car deserves nothing less than a crown-level shine.",
+    "stats": [
+      { "label": "Cars Detailed", "value": "500+" },
+      { "label": "Avg. Rating", "value": "5.0" },
+      { "label": "Cities Served", "value": "10+" },
+      { "label": "Years Experience", "value": "5+" }
+    ]
+  },
+  "services": [
+    {
+      "id": "express-shine",
+      "name": "Express Shine",
+      "price": "From $89",
+      "duration": "~1 hour",
+      "description": "A quick, thorough refresh for the driver who wants their car looking sharp on a budget.",
+      "features": [
+        "Exterior hand wash & dry",
+        "Wheels & tires cleaned",
+        "Windows in & out",
+        "Interior vacuum & wipe down"
+      ]
+    },
+    {
+      "id": "signature-detail",
+      "name": "Signature Detail",
+      "price": "From $189",
+      "duration": "~2.5 hours",
+      "description": "Our most popular package — a deep interior and exterior detail for a true crown-level shine.",
+      "features": [
+        "Everything in Express Shine",
+        "Clay bar & hand wax",
+        "Deep interior shampoo",
+        "Leather cleaning & conditioning",
+        "Trim & dash dressing"
+      ],
+      "highlighted": true
+    },
+    {
+      "id": "full-royal-detail",
+      "name": "Full Royal Detail",
+      "price": "From $349",
+      "duration": "~4-5 hours",
+      "description": "The ultimate transformation — showroom-level correction inside and out.",
+      "features": [
+        "Everything in Signature Detail",
+        "Machine paint correction",
+        "Engine bay detailing",
+        "Headlight restoration",
+        "Ceramic spray sealant"
+      ]
+    },
+    {
+      "id": "ceramic-coating",
+      "name": "Ceramic Coating",
+      "price": "From $599",
+      "duration": "Full day",
+      "description": "Long-term paint protection with a deep, glass-like gloss that lasts for years.",
+      "features": [
+        "Paint decontamination",
+        "Multi-stage paint correction",
+        "Professional-grade ceramic coating",
+        "9H hardness, hydrophobic finish"
+      ]
+    }
+  ],
+  "serviceArea": {
+    "title": "Where We Shine",
+    "subtitle": "We bring the crown treatment to your location across the Greater Seattle area.",
+    "cities": [
+      "Seattle",
+      "Bellevue",
+      "Kirkland",
+      "Redmond",
+      "Issaquah",
+      "Sammamish",
+      "Renton",
+      "Mercer Island",
+      "Bothell",
+      "Woodinville"
+    ]
+  },
+  "testimonials": [
+    {
+      "name": "Michael T.",
+      "car": "Tesla Model S",
+      "quote": "Crown Shine made my car look better than the day I bought it. Incredible attention to detail and they came right to my office.",
+      "rating": 5
+    },
+    {
+      "name": "Sarah K.",
+      "car": "Range Rover Sport",
+      "quote": "The Signature Detail is worth every penny. My leather seats look brand new. Booking online was so easy too.",
+      "rating": 5
+    },
+    {
+      "name": "David R.",
+      "car": "BMW M4",
+      "quote": "Best mobile detailing in the Seattle area, hands down. Professional, punctual, and the ceramic coating is flawless.",
+      "rating": 5
+    }
+  ],
+  "contact": {
+    "phone": "253-378-8086",
+    "email": "info@crownshinemobiledetailing.com",
+    "instagram": "https://instagram.com/crownshine_mobiledetailing",
+    "instagramHandle": "@crownshine_mobiledetailing",
+    "hours": "Mon–Sat: 8:00 AM – 7:00 PM"
+  },
+  "footer": {
+    "tagline": "Luxury mobile detailing across the Greater Seattle area."
+  }
+}
