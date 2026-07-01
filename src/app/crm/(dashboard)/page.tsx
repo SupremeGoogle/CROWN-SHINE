@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState, useCallback } from "react";
 import { GlassCard } from "@/components/ui/GlassCard";
-import { Search, RefreshCw } from "lucide-react";
+import { Search, RefreshCw, FileText } from "lucide-react";
 
 interface Booking {
   id: string;
@@ -117,12 +117,22 @@ export default function CrmPage() {
             Manage and track every Crown Shine appointment.
           </p>
         </div>
-        <button
-          onClick={load}
-          className="flex items-center gap-2 rounded-full border border-gold/25 px-4 py-2 text-sm text-cream/75 hover:border-gold/50 hover:text-gold"
-        >
-          <RefreshCw size={14} className={loading ? "animate-spin" : ""} /> Refresh
-        </button>
+        <div className="flex items-center gap-3">
+          <a
+            href={`/crm/report?${query}`}
+            target="_blank"
+            rel="noreferrer"
+            className="flex items-center gap-2 rounded-full bg-gradient-to-r from-[var(--color-gold-dark)] via-[var(--color-gold)] to-[var(--color-gold-light)] px-5 py-2 text-sm font-semibold text-ink shadow-[0_6px_20px_rgba(212,175,55,0.3)] hover:shadow-[0_8px_26px_rgba(212,175,55,0.45)]"
+          >
+            <FileText size={14} /> Report
+          </a>
+          <button
+            onClick={load}
+            className="flex items-center gap-2 rounded-full border border-gold/25 px-4 py-2 text-sm text-cream/75 hover:border-gold/50 hover:text-gold"
+          >
+            <RefreshCw size={14} className={loading ? "animate-spin" : ""} /> Refresh
+          </button>
+        </div>
       </div>
 
       <div className="mb-8 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">

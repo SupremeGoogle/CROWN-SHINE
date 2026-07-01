@@ -137,3 +137,18 @@ body {
 .animate-fade-up {
   animation: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  html,
+  body {
+    background: var(--color-ink) !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .report-page {
+    padding: 0 !important;
+  }
+}
