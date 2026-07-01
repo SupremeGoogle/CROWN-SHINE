@@ -1,6 +1,6 @@
 {
   "hero": {
-    "eyebrow": "Luxury Mobile Detailing",
+    "eyebrow": "Luxury Mobile Detailing (test edit)",
     "title": "Your Crown Deserves to Shine",
     "subtitle": "Premium mobile car detailing that comes to you — anywhere in Seattle, Bellevue, Kirkland, Redmond, Issaquah and nearby cities.",
     "ctaLabel": "Book Your Detail",
@@ -10,10 +10,22 @@
     "title": "Detailing Fit for Royalty",
     "body": "Crown Shine Mobile Detailing brings a five-star detailing experience directly to your driveway, office, or garage. Every vehicle is treated with meticulous care, premium products, and an obsession for the finest details — because your car deserves nothing less than a crown-level shine.",
     "stats": [
-      { "label": "Cars Detailed", "value": "500+" },
-      { "label": "Avg. Rating", "value": "5.0" },
-      { "label": "Cities Served", "value": "10+" },
-      { "label": "Years Experience", "value": "5+" }
+      {
+        "label": "Cars Detailed",
+        "value": "500+"
+      },
+      {
+        "label": "Avg. Rating",
+        "value": "5.0"
+      },
+      {
+        "label": "Cities Served",
+        "value": "10+"
+      },
+      {
+        "label": "Years Experience",
+        "value": "5+"
+      }
     ]
   },
   "services": [
