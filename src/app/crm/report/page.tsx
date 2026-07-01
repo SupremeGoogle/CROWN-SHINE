@@ -62,15 +62,15 @@ export default async function CrmReportPage({
   const topCity = [...cityCounts.entries()].sort((a, b) => b[1] - a[1])[0];
 
   return (
-    <div className="report-page min-h-screen bg-ink px-8 py-10 text-cream">
+    <div className="report-page min-h-screen bg-ink px-4 py-6 text-cream sm:px-8 sm:py-10">
       <div className="no-print mb-8 flex justify-end">
         <PrintTrigger />
       </div>
 
       <div className="mx-auto max-w-5xl">
-        <div className="flex items-center justify-between border-b border-gold/20 pb-6">
+        <div className="flex flex-col gap-4 border-b border-gold/20 pb-6 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-center gap-3">
-            <BrandMark className="h-12 w-16" />
+            <BrandMark className="h-12 w-16 shrink-0" />
             <div>
               <p className="font-display text-xl">
                 CROWN <span className="text-gold-gradient">SHINE</span>
@@ -80,7 +80,7 @@ export default async function CrmReportPage({
               </p>
             </div>
           </div>
-          <div className="text-right text-xs text-cream/50">
+          <div className="text-xs text-cream/50 sm:text-right">
             <p>Generated {generatedAt}</p>
             <p>{bookings.length} result{bookings.length === 1 ? "" : "s"}</p>
           </div>
@@ -88,7 +88,7 @@ export default async function CrmReportPage({
 
         <p className="mt-4 text-sm text-gold/80">{filterDescription}</p>
 
-        <div className="mt-8 grid grid-cols-3 gap-4 sm:grid-cols-6">
+        <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-6 sm:gap-4">
           <ReportStat label="Total Bookings" value={stats.total} />
           <ReportStat label="Today" value={stats.today} />
           <ReportStat label="New" value={stats.byStatus.NEW ?? 0} />
@@ -97,7 +97,7 @@ export default async function CrmReportPage({
           <ReportStat label="Cancelled" value={stats.byStatus.CANCELLED ?? 0} />
         </div>
 
-        <div className="mt-6 grid grid-cols-2 gap-4">
+        <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
           <div className="rounded-xl border border-gold/15 p-4">
             <p className="text-xs uppercase tracking-widest text-gold/70">
               Most Requested Service (in this report)
@@ -116,7 +116,8 @@ export default async function CrmReportPage({
           </div>
         </div>
 
-        <table className="mt-10 w-full text-left text-xs">
+        <div className="mt-10 overflow-x-auto">
+        <table className="w-full min-w-[700px] text-left text-xs">
           <thead>
             <tr className="border-b border-gold/25 uppercase tracking-widest text-gold/80">
               <th className="py-3 pr-3">Date / Time</th>
@@ -174,6 +175,7 @@ export default async function CrmReportPage({
             ))}
           </tbody>
         </table>
+        </div>
 
         <div className="mt-12 border-t border-gold/15 pt-4 text-center text-[10px] text-cream/40">
           Crown Shine Mobile Detailing &mdash; Confidential internal report &mdash;{" "}
