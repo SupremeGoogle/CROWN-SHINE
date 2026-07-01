@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ButtonLink } from "@/components/ui/Button";
-import { CrownIcon } from "@/components/ui/Crown";
+import { BrandMark } from "@/components/ui/BrandMark";
 import type { SiteContent } from "@/types/site-content";
 
 export function Hero({ hero }: { hero: SiteContent["hero"] }) {
@@ -17,7 +17,7 @@ export function Hero({ hero }: { hero: SiteContent["hero"] }) {
           transition={{ duration: 0.7 }}
           className="animate-float-slow mb-6"
         >
-          <CrownIcon className="h-14 w-20 text-gold drop-shadow-[0_0_20px_rgba(212,175,55,0.5)]" />
+          <BrandMark className="h-28 w-36 drop-shadow-[0_0_24px_rgba(212,175,55,0.45)] sm:h-32 sm:w-40" />
         </motion.div>
 
         <motion.span
