@@ -134,7 +134,7 @@
       {
         "id": "gallery-2",
         "caption": "Ceramic Coating",
-        "tag": "Porsche 911",
+        "tag": "Gloss Protection",
         "image": "https://images.unsplash.com/photo-1620891549027-942fdc95d3f5?fm=jpg&q=80&w=1200&auto=format&fit=crop"
       },
       {
@@ -146,7 +146,7 @@
       {
         "id": "gallery-4",
         "caption": "Interior Deep Clean",
-        "tag": "Mercedes-AMG",
+        "tag": "Spotless Cabin",
         "image": "https://images.unsplash.com/photo-1605437241278-c1806d14a4d9?fm=jpg&q=80&w=1200&auto=format&fit=crop"
       },
       {
@@ -158,7 +158,7 @@
       {
         "id": "gallery-6",
         "caption": "Paint Correction",
-        "tag": "Audi R8",
+        "tag": "Mirror Finish",
         "image": "https://images.unsplash.com/photo-1567808291548-fc3ee04dbcf0?fm=jpg&q=80&w=1200&auto=format&fit=crop"
       }
     ]
