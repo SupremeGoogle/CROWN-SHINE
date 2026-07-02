@@ -103,21 +103,33 @@
   },
   "testimonials": [
     {
-      "name": "Michael T.",
-      "car": "Tesla Model S",
-      "quote": "Crown Shine made my car look better than the day I bought it. Incredible attention to detail and they came right to my office.",
+      "name": "Stepan Lazarev",
+      "car": "2025 BMW XM",
+      "quote": "Came across these guys and they did a great job detailing my 2025 BMW XM. Very detail-oriented — they cleaned every corner of my car inside and out. I definitely recommend and I'll be back. Thank you guys!",
       "rating": 5
     },
     {
-      "name": "Sarah K.",
-      "car": "Range Rover Sport",
-      "quote": "The Signature Detail is worth every penny. My leather seats look brand new. Booking online was so easy too.",
+      "name": "Wendy Davis",
+      "car": "Verified Google review",
+      "quote": "Wonderful experience. He was very polite, arrived on time, and did a fantastic job. Such a great convenience that he came to me so it didn't disrupt my day — and when he was done my car was spotless and smelled great. You couldn't even tell that my 140 lb dog rides in it every day! Would definitely recommend.",
       "rating": 5
     },
     {
-      "name": "David R.",
-      "car": "BMW M4",
-      "quote": "Best mobile detailing in the Seattle area, hands down. Professional, punctual, and the ceramic coating is flawless.",
+      "name": "Olya Svyrydenko",
+      "car": "Verified Google review",
+      "quote": "Made a birthday present 🎁 to my husband with his car cleaning! It was a great surprise — high-quality work and excellent communication and timing. Thanks!",
+      "rating": 5
+    },
+    {
+      "name": "Рома Тихон",
+      "car": "Verified Google review",
+      "quote": "Arthur, I'm very satisfied with your work — everything is cleaned so professionally inside, like it just came straight from the factory. I highly recommend him to anyone who wants their car professionally detailed at home. Quality is the most important thing for me, and that's exactly what he delivers.",
+      "rating": 5
+    },
+    {
+      "name": "A. Baban",
+      "car": "Verified Google review",
+      "quote": "I was looking for a detailing service and found Crown Shine Mobile Detailing. This guy is very responsible — he came to my place 10 minutes before the scheduled time and did a great job. A very nice and honest person. Thank you for the precise approach.",
       "rating": 5
     }
   ],

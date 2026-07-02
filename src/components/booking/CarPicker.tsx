@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Combobox } from "@/components/ui/Combobox";
+import { SelectMenu } from "@/components/ui/SelectMenu";
 import { VEHICLE_CATEGORIES } from "@/lib/vehicles";
 
 export interface CarValue {
@@ -67,18 +68,12 @@ export function CarPicker({
         <label className="mb-2 block text-xs font-semibold uppercase tracking-widest text-gold">
           Vehicle Type
         </label>
-        <select
+        <SelectMenu
+          options={[...VEHICLE_CATEGORIES]}
           value={value.category}
-          onChange={(e) => onChange({ ...value, category: e.target.value })}
-          className="w-full rounded-xl border border-gold/25 bg-ink-soft/60 px-4 py-3 text-sm text-cream outline-none focus:border-gold/60"
-        >
-          <option value="">Select vehicle type</option>
-          {VEHICLE_CATEGORIES.map((c) => (
-            <option key={c} value={c}>
-              {c}
-            </option>
-          ))}
-        </select>
+          placeholder="Select vehicle type"
+          onChange={(category) => onChange({ ...value, category })}
+        />
       </div>
 
       {!manual ? (
@@ -161,18 +156,12 @@ export function CarPicker({
         <label className="mb-2 block text-xs font-semibold uppercase tracking-widest text-gold">
           Year (optional)
         </label>
-        <select
+        <SelectMenu
+          options={YEARS}
           value={value.year}
-          onChange={(e) => onChange({ ...value, year: e.target.value })}
-          className="w-full rounded-xl border border-gold/25 bg-ink-soft/60 px-4 py-3 text-sm text-cream outline-none focus:border-gold/60"
-        >
-          <option value="">Year</option>
-          {YEARS.map((y) => (
-            <option key={y} value={y}>
-              {y}
-            </option>
-          ))}
-        </select>
+          placeholder="Year"
+          onChange={(year) => onChange({ ...value, year })}
+        />
       </div>
     </div>
   );
