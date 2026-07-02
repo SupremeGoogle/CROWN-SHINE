@@ -44,7 +44,6 @@ export function Testimonials({
                 </p>
                 <div className="mt-6 border-t border-gold/15 pt-4">
                   <p className="text-sm font-semibold text-cream">{t.name}</p>
-                  <p className="text-xs text-cream/50">{t.car}</p>
                 </div>
               </GlassCard>
             </motion.div>

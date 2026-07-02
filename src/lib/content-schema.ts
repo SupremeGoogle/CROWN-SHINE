@@ -41,7 +41,7 @@ export const siteContentSchema = z.object({
     .array(
       z.object({
         name: z.string().trim().min(1).max(100),
-        car: z.string().trim().min(1).max(100),
+        car: z.string().trim().max(100).optional().or(z.literal("")),
         quote: z.string().trim().min(1).max(1000),
         rating: z.number().int().min(1).max(5),
       })

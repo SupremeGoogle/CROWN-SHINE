@@ -11,7 +11,7 @@ import { WhyUs } from "@/components/sections/WhyUs";
 import { ServiceArea } from "@/components/sections/ServiceArea";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { Faq } from "@/components/sections/Faq";
-import { CtaBanner } from "@/components/sections/CtaBanner";
+import { BookingWizard } from "@/components/booking/BookingWizard";
 
 export default async function Home() {
   const content = await getSiteContent();
@@ -30,7 +30,20 @@ export default async function Home() {
         <ServiceArea area={content.serviceArea} />
         <Testimonials testimonials={content.testimonials} />
         <Faq faq={content.faq} />
-        <CtaBanner />
+        <section id="book" className="relative px-6 py-20">
+          <div className="mx-auto mb-10 max-w-2xl text-center">
+            <h2 className="font-display text-3xl sm:text-4xl">
+              Book Your <span className="text-gold-gradient">Detail</span>
+            </h2>
+            <p className="mt-3 text-cream/65">
+              Pick your car, your package, and your time — we&apos;ll take care of the rest.
+            </p>
+          </div>
+          <BookingWizard
+            services={content.services}
+            cities={content.serviceArea.cities}
+          />
+        </section>
       </main>
       <div className="relative z-10">
         <Footer content={content} />

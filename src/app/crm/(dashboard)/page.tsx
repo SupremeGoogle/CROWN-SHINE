@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState, useCallback } from "react";
 import { GlassCard } from "@/components/ui/GlassCard";
+import { SelectMenu } from "@/components/ui/SelectMenu";
 import { Search, RefreshCw, FileText } from "lucide-react";
 
 interface Booking {
@@ -51,7 +52,7 @@ const STATUS_STYLES: Record<string, string> = {
 export default function CrmPage() {
   const [data, setData] = useState<ApiResponse | null>(null);
   const [loading, setLoading] = useState(true);
-  const [dateFilter, setDateFilter] = useState("today");
+  const [dateFilter, setDateFilter] = useState("all");
   const [customFrom, setCustomFrom] = useState("");
   const [customTo, setCustomTo] = useState("");
   const [status, setStatus] = useState("all");
@@ -145,18 +146,16 @@ export default function CrmPage() {
       </div>
 
       <GlassCard className="mb-6 flex flex-wrap items-end gap-4 p-5">
-        <FilterField label="Date">
-          <select
-            value={dateFilter}
-            onChange={(e) => setDateFilter(e.target.value)}
-            className={selectClass}
-          >
-            {DATE_FILTERS.map((f) => (
-              <option key={f.value} value={f.value}>
-                {f.label}
-              </option>
-            ))}
-          </select>
+        <FilterField label="Date" className="min-w-[150px]">
+          <SelectMenu
+            options={DATE_FILTERS.map((f) => f.label)}
+            value={DATE_FILTERS.find((f) => f.value === dateFilter)?.label ?? ""}
+            placeholder="Date"
+            onChange={(label) => {
+              const f = DATE_FILTERS.find((x) => x.label === label);
+              if (f) setDateFilter(f.value);
+            }}
+          />
         </FilterField>
 
         {dateFilter === "custom" && (
@@ -182,26 +181,22 @@ export default function CrmPage() {
           </>
         )}
 
-        <FilterField label="Status">
-          <select value={status} onChange={(e) => setStatus(e.target.value)} className={selectClass}>
-            <option value="all">All</option>
-            {STATUS_OPTIONS.map((s) => (
-              <option key={s} value={s}>
-                {s}
-              </option>
-            ))}
-          </select>
+        <FilterField label="Status" className="min-w-[150px]">
+          <SelectMenu
+            options={["All", ...STATUS_OPTIONS]}
+            value={status === "all" ? "All" : status}
+            placeholder="Status"
+            onChange={(v) => setStatus(v === "All" ? "all" : v)}
+          />
         </FilterField>
 
-        <FilterField label="City">
-          <select value={city} onChange={(e) => setCity(e.target.value)} className={selectClass}>
-            <option value="all">All Cities</option>
-            {(data?.cities ?? []).map((c) => (
-              <option key={c} value={c}>
-                {c}
-              </option>
-            ))}
-          </select>
+        <FilterField label="City" className="min-w-[160px]">
+          <SelectMenu
+            options={["All Cities", ...(data?.cities ?? [])]}
+            value={city === "all" ? "All Cities" : city}
+            placeholder="City"
+            onChange={(v) => setCity(v === "All Cities" ? "all" : v)}
+          />
         </FilterField>
 
         <FilterField label="Search" className="min-w-[220px] flex-1">

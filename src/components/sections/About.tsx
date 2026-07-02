@@ -21,7 +21,7 @@ export function About({ about }: { about: SiteContent["about"] }) {
           <p className="mt-6 text-lg leading-relaxed text-cream/75">{about.body}</p>
         </motion.div>
 
-        <div className="mt-16 grid grid-cols-2 gap-4 sm:grid-cols-4">
+        <div className="mt-16 grid auto-rows-fr grid-cols-2 gap-4 sm:grid-cols-4">
           {about.stats.map((s, i) => (
             <motion.div
               key={s.label}
@@ -29,8 +29,9 @@ export function About({ about }: { about: SiteContent["about"] }) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.1 }}
+              className="h-full"
             >
-              <GlassCard className="flex flex-col items-center gap-1 px-4 py-8 text-center">
+              <GlassCard className="flex h-full flex-col items-center justify-center gap-1 px-4 py-8 text-center">
                 <span className="font-display text-3xl text-gold-gradient sm:text-4xl">
                   {s.value}
                 </span>

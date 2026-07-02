@@ -59,7 +59,7 @@ export function Hero({ hero }: { hero: SiteContent["hero"] }) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.2 }}
-          className="font-display text-4xl leading-tight sm:text-6xl md:text-7xl"
+          className="font-display text-[1.7rem] leading-tight break-words hyphens-auto sm:text-6xl md:text-7xl"
         >
           <span className="text-gold-gradient">{hero.title}</span>
         </motion.h1>

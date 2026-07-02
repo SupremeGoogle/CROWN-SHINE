@@ -27,7 +27,7 @@ export function Gallery({ gallery }: { gallery: SiteContent["gallery"] }) {
           <p className="mt-4 text-cream/70">{gallery.subtitle}</p>
         </motion.div>
 
-        <div className="carousel-mobile mt-14 sm:grid sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
+        <div className="mt-10 grid grid-cols-2 gap-3 sm:mt-14 sm:gap-5 lg:grid-cols-3">
           {gallery.items.map((item, i) => (
             <motion.div
               key={item.id}
@@ -35,7 +35,7 @@ export function Gallery({ gallery }: { gallery: SiteContent["gallery"] }) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.06 }}
-              className="group relative aspect-[4/3] w-[80%] shrink-0 snap-center overflow-hidden rounded-2xl border border-gold/15 sm:w-auto"
+              className="group relative aspect-[4/3] overflow-hidden rounded-2xl border border-gold/15"
             >
               {item.image ? (
                 // eslint-disable-next-line @next/next/no-img-element -- admin-supplied URLs may be from any host
@@ -51,9 +51,9 @@ export function Gallery({ gallery }: { gallery: SiteContent["gallery"] }) {
                   <CarSilhouette className="h-16 w-32 text-gold/50 transition-transform duration-500 group-hover:scale-110" />
                 </div>
               )}
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 to-transparent p-4 pt-10">
-                <p className="font-display text-base text-cream">{item.caption}</p>
-                <p className="text-xs uppercase tracking-widest text-gold/80">{item.tag}</p>
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 to-transparent p-3 pt-8 sm:p-4 sm:pt-10">
+                <p className="font-display text-xs leading-tight text-cream sm:text-base">{item.caption}</p>
+                <p className="text-[10px] uppercase tracking-widest text-gold/80 sm:text-xs">{item.tag}</p>
               </div>
             </motion.div>
           ))}

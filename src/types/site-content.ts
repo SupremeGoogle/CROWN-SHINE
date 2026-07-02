@@ -40,7 +40,7 @@ export interface SiteContent {
     subtitle: string;
     cities: string[];
   };
-  testimonials: { name: string; car: string; quote: string; rating: number }[];
+  testimonials: { name: string; car?: string; quote: string; rating: number }[];
   gallery: {
     title: string;
     subtitle: string;

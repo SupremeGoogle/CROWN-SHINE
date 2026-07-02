@@ -481,16 +481,6 @@ export function ContentEditor() {
                       }}
                     />
                   </Field>
-                  <Field label="Car">
-                    <TextInput
-                      value={t.car}
-                      onChange={(v) => {
-                        const testimonials = [...content.testimonials];
-                        testimonials[i] = { ...testimonials[i], car: v };
-                        setContent({ ...content, testimonials });
-                      }}
-                    />
-                  </Field>
                   <Field label="Quote" className="sm:col-span-2">
                     <TextArea
                       value={t.quote}
@@ -536,7 +526,7 @@ export function ContentEditor() {
                   ...content,
                   testimonials: [
                     ...content.testimonials,
-                    { name: "", car: "", quote: "", rating: 5 },
+                    { name: "", quote: "", rating: 5 },
                   ],
                 })
               }

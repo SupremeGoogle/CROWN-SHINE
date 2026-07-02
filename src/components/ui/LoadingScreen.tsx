@@ -6,6 +6,14 @@ export function LoadingScreen() {
   const [phase, setPhase] = useState<"show" | "fade" | "gone">("show");
 
   useEffect(() => {
+    // Показываем заставку только один раз за сессию (первое открытие сайта).
+    // При переходах по якорным ссылкам и повторной навигации она не появляется.
+    if (sessionStorage.getItem("cs_splash_shown")) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- one-time splash gate on mount
+      setPhase("gone");
+      return;
+    }
+    sessionStorage.setItem("cs_splash_shown", "1");
     const t1 = setTimeout(() => setPhase("fade"), 1700);
     const t2 = setTimeout(() => setPhase("gone"), 2300);
     return () => {
