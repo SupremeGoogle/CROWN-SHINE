@@ -6,7 +6,27 @@ import type { SiteContent } from "@/types/site-content";
 
 export function Hero({ hero }: { hero: SiteContent["hero"] }) {
   return (
-    <section className="relative flex min-h-screen items-center justify-center px-6 pt-28">
+    <section className="relative flex min-h-screen items-center justify-center overflow-hidden px-6 pt-28">
+      {/* Фоновое видео + затемнение для читаемости текста на любых экранах */}
+      <div className="absolute inset-0">
+        <video
+          className="h-full w-full object-cover"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          poster="/hero-poster.jpg"
+          aria-hidden="true"
+        >
+          <source src="/hero-bg.mp4" type="video/mp4" />
+        </video>
+        {/* Скрим: сверху под навбар, плотнее по центру под текстом, снизу в чёрный — плавный переход к странице */}
+        <div className="absolute inset-0 bg-gradient-to-b from-ink/80 via-ink/60 to-ink" />
+        {/* Виньетка по краям для контраста */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_30%,_rgba(5,5,5,0.6))]" />
+      </div>
+
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(212,175,55,0.14),transparent_60%)]" />
 
       <div className="relative z-10 mx-auto flex max-w-4xl flex-col items-center text-center">

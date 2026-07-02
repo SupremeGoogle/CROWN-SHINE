@@ -41,3 +41,6 @@ yarn-error.log*
 next-env.d.ts
 
 /src/generated/prisma
+
+# original uncompressed hero video (optimized version lives in public/)
+/video-2.mp4

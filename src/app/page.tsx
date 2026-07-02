@@ -1,4 +1,5 @@
 import { getSiteContent } from "@/lib/content";
+import { LoadingScreen } from "@/components/ui/LoadingScreen";
 import { CrownPattern } from "@/components/CrownPattern";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
@@ -17,6 +18,7 @@ export default async function Home() {
 
   return (
     <div className="relative flex min-h-screen flex-col overflow-hidden">
+      <LoadingScreen />
       <CrownPattern className="fixed" />
       <Navbar />
       <main className="relative z-10 flex-1">

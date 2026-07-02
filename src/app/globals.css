@@ -141,6 +141,30 @@ body {
   animation: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.animate-spin-slow {
+  animation: spin-slow 1.4s linear infinite;
+}
+
+@keyframes loader-glow {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 12px rgba(212, 175, 55, 0.35));
+    opacity: 0.9;
+  }
+  50% {
+    filter: drop-shadow(0 0 30px rgba(212, 175, 55, 0.7));
+    opacity: 1;
+  }
+}
+.animate-loader-glow {
+  animation: loader-glow 1.6s ease-in-out infinite;
+}
+
 @media print {
   .no-print {
     display: none !important;
