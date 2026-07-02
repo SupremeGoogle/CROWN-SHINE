@@ -196,7 +196,7 @@ export default function CrmPage() {
         <StatCard label="Cancelled" value={stats?.byStatus?.CANCELLED ?? 0} />
       </div>
 
-      <GlassCard className="mb-6 flex flex-wrap items-end gap-4 p-5">
+      <GlassCard className="relative z-20 mb-6 flex flex-wrap items-end gap-4 p-5">
         <FilterField label="Date" className="min-w-[150px]">
           <SelectMenu
             options={DATE_FILTERS.map((f) => f.label)}
