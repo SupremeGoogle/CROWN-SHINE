@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import { ButtonLink } from "@/components/ui/Button";
-import { BrandMark } from "@/components/ui/BrandMark";
 import type { SiteContent } from "@/types/site-content";
 
 export function Hero({ hero }: { hero: SiteContent["hero"] }) {
@@ -17,7 +16,7 @@ export function Hero({ hero }: { hero: SiteContent["hero"] }) {
           transition={{ duration: 0.7 }}
           className="animate-float-slow mb-6"
         >
-          <BrandMark className="h-28 w-36 drop-shadow-[0_0_24px_rgba(212,175,55,0.45)] sm:h-32 sm:w-40" />
+          <img src="/logo.png" alt="Crown Shine" className="h-28 w-auto object-contain drop-shadow-[0_0_24px_rgba(212,175,55,0.45)] sm:h-32" />
         </motion.div>
 
         <motion.span

@@ -3,7 +3,7 @@
 import { Suspense, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { CrownPattern } from "@/components/CrownPattern";
-import { BrandMark } from "@/components/ui/BrandMark";
+
 import { GlassCard } from "@/components/ui/GlassCard";
 import { Button } from "@/components/ui/Button";
 
@@ -43,7 +43,7 @@ function LoginForm() {
       <CrownPattern className="fixed" />
       <GlassCard strong className="relative z-10 w-full max-w-sm gold-border-glow p-8">
         <div className="mb-6 flex flex-col items-center text-center">
-          <BrandMark className="mb-3 h-10 w-13 text-gold" gold="currentColor" />
+          <img src="/logo.png" alt="Crown Shine" className="mb-3 h-12 w-auto object-contain" />
           <h1 className="font-display text-xl text-cream">
             CROWN <span className="text-gold-gradient">SHINE</span>
           </h1>

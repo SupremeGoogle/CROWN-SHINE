@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { BrandMark } from "@/components/ui/BrandMark";
+
 import { LogOut } from "lucide-react";
 import type { ReactNode } from "react";
 
@@ -26,7 +26,7 @@ export function AdminShell({ children }: { children: ReactNode }) {
       <header className="glass-panel-strong sticky top-0 z-40 flex flex-wrap items-center justify-between gap-3 px-4 py-3 sm:px-6 sm:py-4">
         <div className="flex items-center gap-3 sm:gap-8">
           <div className="flex items-center gap-2">
-            <BrandMark className="h-7 w-9 shrink-0 text-gold" gold="currentColor" />
+            <img src="/logo.png" alt="Crown Shine" className="h-7 w-auto object-contain shrink-0" />
             <span className="hidden font-display text-sm tracking-widest sm:inline">
               CROWN <span className="text-gold-gradient">SHINE</span>
             </span>
