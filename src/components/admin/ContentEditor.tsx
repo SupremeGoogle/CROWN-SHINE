@@ -611,12 +611,6 @@ export function ContentEditor() {
                 onChange={(v) => setContent({ ...content, contact: { ...content.contact, phone: v } })}
               />
             </Field>
-            <Field label="Email">
-              <TextInput
-                value={content.contact.email}
-                onChange={(v) => setContent({ ...content, contact: { ...content.contact, email: v } })}
-              />
-            </Field>
             <Field label="Instagram URL">
               <TextInput
                 value={content.contact.instagram}

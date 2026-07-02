@@ -56,7 +56,7 @@ export interface SiteContent {
   };
   contact: {
     phone: string;
-    email: string;
+    email?: string;
     instagram: string;
     instagramHandle: string;
     hours: string;

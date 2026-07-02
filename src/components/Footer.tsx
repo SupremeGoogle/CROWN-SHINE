@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Phone, Mail } from "lucide-react";
+import { Phone } from "lucide-react";
 import { InstagramIcon } from "@/components/ui/InstagramIcon";
 import type { SiteContent } from "@/types/site-content";
 
@@ -26,12 +26,6 @@ export function Footer({ content }: { content: SiteContent }) {
             className="flex items-center gap-2 hover:text-gold"
           >
             <Phone size={15} /> {content.contact.phone}
-          </a>
-          <a
-            href={`mailto:${content.contact.email}`}
-            className="flex items-center gap-2 hover:text-gold"
-          >
-            <Mail size={15} /> {content.contact.email}
           </a>
           <a
             href={content.contact.instagram}

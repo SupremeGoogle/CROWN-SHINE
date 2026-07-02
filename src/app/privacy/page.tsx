@@ -9,10 +9,10 @@ export const metadata: Metadata = {
 
 export default async function PrivacyPolicyPage() {
   const content = await getSiteContent();
-  const { phone, email } = content.contact;
+  const { phone } = content.contact;
 
   return (
-    <LegalPage title="Privacy Policy" updated="July 1, 2026" content={content}>
+    <LegalPage title="Privacy Policy" updated="July 2, 2026" content={content}>
       <p>
         Crown Shine Mobile Detailing (&quot;Crown Shine,&quot; &quot;we,&quot; &quot;us,&quot; or
         &quot;our&quot;) provides mobile car detailing services to customers in Seattle,
@@ -108,10 +108,6 @@ export default async function PrivacyPolicyPage() {
         <p>
           You may request to access, correct, or delete your personal information, or withdraw
           marketing consent at any time, by contacting us at{" "}
-          <a href={`mailto:${email}`} className="text-gold underline hover:text-gold-light">
-            {email}
-          </a>{" "}
-          or{" "}
           <a href={`tel:${phone.replace(/[^\d+]/g, "")}`} className="text-gold underline hover:text-gold-light">
             {phone}
           </a>
@@ -135,11 +131,7 @@ export default async function PrivacyPolicyPage() {
 
       <LegalSection title="10. Contact Us">
         <p>
-          Questions about this Privacy Policy? Reach us at{" "}
-          <a href={`mailto:${email}`} className="text-gold underline hover:text-gold-light">
-            {email}
-          </a>{" "}
-          or{" "}
+          Questions about this Privacy Policy? Reach us by phone at{" "}
           <a href={`tel:${phone.replace(/[^\d+]/g, "")}`} className="text-gold underline hover:text-gold-light">
             {phone}
           </a>

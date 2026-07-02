@@ -9,15 +9,16 @@ export const metadata: Metadata = {
 
 export default async function TermsPage() {
   const content = await getSiteContent();
-  const { phone, email } = content.contact;
+  const { phone } = content.contact;
 
   return (
-    <LegalPage title="Terms of Service" updated="July 1, 2026" content={content}>
+    <LegalPage title="Terms of Service" updated="July 2, 2026" content={content}>
       <p>
         These Terms of Service (&quot;Terms&quot;) govern your use of the Crown Shine Mobile
         Detailing website and booking system, and your purchase of detailing services from
-        Crown Shine Mobile Detailing (&quot;Crown Shine,&quot; &quot;we,&quot; &quot;us&quot;).
-        By booking an appointment with us, you agree to these Terms.
+        Crown Shine Mobile LLC, doing business as Crown Shine Mobile Detailing (&quot;Crown
+        Shine,&quot; &quot;we,&quot; &quot;us&quot;). By booking an appointment with us, you agree
+        to these Terms.
       </p>
 
       <LegalSection title="1. Our Services">
@@ -48,9 +49,15 @@ export default async function TermsPage() {
 
       <LegalSection title="4. Cancellations &amp; Rescheduling">
         <p>
-          We understand plans change. Please give us as much notice as possible &mdash; ideally
-          at least 24 hours &mdash; if you need to cancel or reschedule, so we can offer that time
-          slot to another customer.
+          We understand plans change. You may cancel or reschedule your appointment at no charge
+          as long as you give us at least <strong>24 hours&apos; notice</strong> before your
+          scheduled start time. This lets us offer the slot to another customer.
+        </p>
+        <p>
+          Cancellations or reschedule requests made <strong>less than 24 hours</strong> before
+          the appointment, or a no-show at the scheduled time, may be subject to a cancellation
+          fee. If any deposit or prepayment applies to your booking, it may be forfeited for
+          late cancellations or no-shows.
         </p>
       </LegalSection>
 
@@ -103,11 +110,7 @@ export default async function TermsPage() {
 
       <LegalSection title="11. Contact Us">
         <p>
-          Questions about these Terms? Reach us at{" "}
-          <a href={`mailto:${email}`} className="text-gold underline hover:text-gold-light">
-            {email}
-          </a>{" "}
-          or{" "}
+          Questions about these Terms? Reach us by phone at{" "}
           <a href={`tel:${phone.replace(/[^\d+]/g, "")}`} className="text-gold underline hover:text-gold-light">
             {phone}
           </a>

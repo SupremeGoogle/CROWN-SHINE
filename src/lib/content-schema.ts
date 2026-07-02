@@ -86,7 +86,7 @@ export const siteContentSchema = z.object({
   }),
   contact: z.object({
     phone: z.string().trim().min(1).max(30),
-    email: z.string().trim().email().max(200),
+    email: z.string().trim().email().max(200).optional().or(z.literal("")),
     instagram: z.string().trim().url().max(300),
     instagramHandle: z.string().trim().min(1).max(60),
     hours: z.string().trim().min(1).max(200),

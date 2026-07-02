@@ -179,7 +179,7 @@ export default async function CrmReportPage({
 
         <div className="mt-12 border-t border-gold/15 pt-4 text-center text-[10px] text-cream/40">
           Crown Shine Mobile Detailing &mdash; Confidential internal report &mdash;{" "}
-          {content.contact.phone} &mdash; {content.contact.email}
+          {content.contact.phone}
         </div>
       </div>
     </div>
