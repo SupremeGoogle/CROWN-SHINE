@@ -5,8 +5,11 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  // Пул соединений (Neon/Vercel даёт эту строку для рантайма Prisma).
+  url       = env("POSTGRES_PRISMA_URL")
+  // Прямое соединение без пула — нужно для миграций (prisma migrate).
+  directUrl = env("POSTGRES_URL_NON_POOLING")
 }
 
 enum BookingStatus {
