@@ -9,8 +9,15 @@ export function Hero({ hero }: { hero: SiteContent["hero"] }) {
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden px-6 pt-28">
       {/* Фоновое видео + затемнение для читаемости текста на любых экранах */}
       <div className="absolute inset-0">
+        {/* Тематическое изображение для мобильной версии */}
+        <img
+          src="/mobile-hero-bg.jpg"
+          alt="Crown Shine Detailing"
+          className="block md:hidden h-full w-full object-cover"
+        />
+        {/* Видео для десктопной версии */}
         <video
-          className="h-full w-full object-cover"
+          className="hidden md:block h-full w-full object-cover"
           autoPlay
           muted
           loop
