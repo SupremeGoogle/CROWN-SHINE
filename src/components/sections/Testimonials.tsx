@@ -23,7 +23,7 @@ export function Testimonials({
           What Our <span className="text-gold-gradient">Clients Say</span>
         </motion.h2>
 
-        <div className="-mx-6 mt-16 flex snap-x snap-mandatory gap-5 overflow-x-auto px-6 pb-4 sm:gap-6">
+        <div className="no-scrollbar -mx-6 mt-16 flex snap-x snap-mandatory gap-5 overflow-x-auto px-6 pb-4 sm:gap-6">
           {testimonials.map((t, i) => (
             <motion.div
               key={t.name}

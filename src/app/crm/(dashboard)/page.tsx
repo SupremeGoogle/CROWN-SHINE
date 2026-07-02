@@ -3,27 +3,10 @@
 import { useEffect, useMemo, useState, useCallback } from "react";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { SelectMenu } from "@/components/ui/SelectMenu";
-import { Search, RefreshCw, FileText } from "lucide-react";
+import { Search, RefreshCw, FileText, Pencil, Download } from "lucide-react";
+import { BookingEditModal, type BookingRecord } from "@/components/admin/BookingEditModal";
 
-interface Booking {
-  id: string;
-  createdAt: string;
-  status: "NEW" | "CONFIRMED" | "COMPLETED" | "CANCELLED";
-  customerName: string;
-  phone: string;
-  email: string;
-  carMake: string;
-  carModel: string;
-  carYear: string | null;
-  serviceName: string;
-  notes: string | null;
-  address: string;
-  city: string;
-  preferredDate: string;
-  preferredTime: string;
-  marketingEmailConsent: boolean;
-  marketingSmsConsent: boolean;
-}
+type Booking = BookingRecord;
 
 interface ApiResponse {
   bookings: Booking[];
@@ -58,6 +41,7 @@ export default function CrmPage() {
   const [status, setStatus] = useState("all");
   const [city, setCity] = useState("all");
   const [search, setSearch] = useState("");
+  const [editing, setEditing] = useState<Booking | null>(null);
 
   const query = useMemo(() => {
     const p = new URLSearchParams();
@@ -105,6 +89,28 @@ export default function CrmPage() {
     });
   }
 
+  function applyEdit(updated: Booking) {
+    setData((prev) =>
+      prev
+        ? { ...prev, bookings: prev.bookings.map((b) => (b.id === updated.id ? updated : b)) }
+        : prev
+    );
+    setEditing(null);
+  }
+
+  function removeBooking(id: string) {
+    setData((prev) =>
+      prev
+        ? {
+            ...prev,
+            bookings: prev.bookings.filter((b) => b.id !== id),
+            stats: { ...prev.stats, total: Math.max(0, prev.stats.total - 1) },
+          }
+        : prev
+    );
+    setEditing(null);
+  }
+
   const stats = data?.stats;
 
   return (
@@ -118,7 +124,7 @@ export default function CrmPage() {
             Manage and track every Crown Shine appointment.
           </p>
         </div>
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center gap-3">
           <a
             href={`/crm/report?${query}`}
             target="_blank"
@@ -126,6 +132,13 @@ export default function CrmPage() {
             className="flex items-center gap-2 rounded-full bg-gradient-to-r from-[var(--color-gold-dark)] via-[var(--color-gold)] to-[var(--color-gold-light)] px-5 py-2 text-sm font-semibold text-ink shadow-[0_6px_20px_rgba(212,175,55,0.3)] hover:shadow-[0_8px_26px_rgba(212,175,55,0.45)]"
           >
             <FileText size={14} /> Report
+          </a>
+          {/* eslint-disable-next-line @next/next/no-html-link-for-pages -- file download from an API route, not a page navigation */}
+          <a
+            href="/api/admin/bookings/export"
+            className="flex items-center gap-2 rounded-full border border-gold/25 px-4 py-2 text-sm text-cream/75 hover:border-gold/50 hover:text-gold"
+          >
+            <Download size={14} /> Export XLSX
           </a>
           <button
             onClick={load}
@@ -223,12 +236,13 @@ export default function CrmPage() {
               <th className="px-5 py-4">Service</th>
               <th className="px-5 py-4">City</th>
               <th className="px-5 py-4">Status</th>
+              <th className="px-5 py-4 text-right">Edit</th>
             </tr>
           </thead>
           <tbody>
             {data?.bookings.length === 0 && !loading && (
               <tr>
-                <td colSpan={6} className="px-5 py-10 text-center text-cream/40">
+                <td colSpan={7} className="px-5 py-10 text-center text-cream/40">
                   No bookings match these filters.
                 </td>
               </tr>
@@ -272,11 +286,30 @@ export default function CrmPage() {
                     ))}
                   </select>
                 </td>
+                <td className="px-5 py-4 text-right">
+                  <button
+                    type="button"
+                    onClick={() => setEditing(b)}
+                    aria-label="Edit booking"
+                    className="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-gold/25 text-cream/70 transition hover:border-gold/60 hover:text-gold"
+                  >
+                    <Pencil size={14} />
+                  </button>
+                </td>
               </tr>
             ))}
           </tbody>
         </table>
       </GlassCard>
+
+      {editing && (
+        <BookingEditModal
+          booking={editing}
+          onClose={() => setEditing(null)}
+          onSaved={applyEdit}
+          onDeleted={removeBooking}
+        />
+      )}
     </div>
   );
 }

@@ -44,6 +44,7 @@ model Booking {
   // service
   serviceName String
   notes       String?
+  adminNotes  String?
 
   // location & schedule
   address        String

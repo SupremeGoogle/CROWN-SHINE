@@ -200,3 +200,12 @@ body {
     display: none;
   }
 }
+
+/* Скрытая полоса прокрутки (для горизонтального скролла отзывов и т.п.) */
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
