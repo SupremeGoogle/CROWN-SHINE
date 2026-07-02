@@ -1,10 +1,10 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { CalendarDays } from "lucide-react";
+import { Calendar } from "@/components/ui/Calendar";
 
 const TIME_SLOTS = [
-  "8:00 AM",
   "9:00 AM",
   "10:00 AM",
   "11:00 AM",
@@ -14,6 +14,9 @@ const TIME_SLOTS = [
   "3:00 PM",
   "4:00 PM",
   "5:00 PM",
+  "6:00 PM",
+  "7:00 PM",
+  "8:00 PM",
 ];
 
 function todayIso() {
@@ -44,62 +47,54 @@ export function StepSchedule({
   onDateChange: (date: string) => void;
   onTimeChange: (time: string) => void;
 }) {
-  const isSunday = date ? new Date(date + "T00:00:00").getDay() === 0 : false;
-  const dateInputRef = useRef<HTMLInputElement>(null);
+  const [open, setOpen] = useState(false);
+  const wrapRef = useRef<HTMLDivElement>(null);
 
-  function openPicker() {
-    const input = dateInputRef.current;
-    if (!input) return;
-    if ("showPicker" in input) {
-      try {
-        (input as HTMLInputElement & { showPicker: () => void }).showPicker();
-        return;
-      } catch {
-        // fall through to focus
+  useEffect(() => {
+    function onDown(e: MouseEvent) {
+      if (wrapRef.current && !wrapRef.current.contains(e.target as Node)) {
+        setOpen(false);
       }
     }
-    input.focus();
-  }
+    document.addEventListener("mousedown", onDown);
+    return () => document.removeEventListener("mousedown", onDown);
+  }, []);
 
   return (
     <div>
       <h2 className="font-display text-2xl text-cream">Pick a Date &amp; Time</h2>
       <p className="mt-1 mb-6 text-sm text-cream/60">
-        We&apos;re available Monday–Saturday, 8:00 AM – 7:00 PM.
+        We&apos;re available Monday–Sunday, 9:00 AM – 9:00 PM.
       </p>
 
       <div className="max-w-xs">
         <label className="mb-2 block text-xs font-semibold uppercase tracking-widest text-gold">
           Date
         </label>
-        <div className="relative">
+        <div className="relative" ref={wrapRef}>
           <button
             type="button"
-            onClick={openPicker}
-            className="flex w-full items-center justify-between rounded-xl border border-gold/25 bg-ink-soft/60 px-4 py-3 text-left text-sm text-cream outline-none focus:border-gold/60"
+            onClick={() => setOpen((o) => !o)}
+            className="flex w-full items-center justify-between rounded-xl border border-gold/25 bg-ink-soft/60 px-4 py-3 text-left text-sm text-cream outline-none transition focus:border-gold/60"
           >
             <span className={date ? "text-cream" : "text-cream/35"}>
               {date ? formatDateEn(date) : "Select a date"}
             </span>
             <CalendarDays size={16} className="text-gold/70" />
           </button>
-          <input
-            ref={dateInputRef}
-            type="date"
-            lang="en-US"
-            min={todayIso()}
-            value={date}
-            onChange={(e) => onDateChange(e.target.value)}
-            tabIndex={-1}
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-0 opacity-0"
-          />
+          {open && (
+            <div className="absolute left-0 top-full z-30 mt-2">
+              <Calendar
+                value={date}
+                min={todayIso()}
+                onChange={(iso) => {
+                  onDateChange(iso);
+                  setOpen(false);
+                }}
+              />
+            </div>
+          )}
         </div>
-        {isSunday && (
-          <p className="mt-2 text-xs text-amber-400">
-            We&apos;re closed on Sundays — please pick another day.
-          </p>
-        )}
       </div>
 
       <div className="mt-6">

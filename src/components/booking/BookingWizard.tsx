@@ -56,12 +56,12 @@ export function BookingWizard({
   const canNext = (() => {
     if (step === 0) return Boolean(car.category && car.make && car.model);
     if (step === 1) return Boolean(serviceId);
-    if (step === 2) return Boolean(date && time && new Date(date + "T00:00:00").getDay() !== 0);
+    if (step === 2) return Boolean(date && time);
     return true;
   })();
 
   const canSubmit =
-    contact.customerName && contact.phone && contact.email && contact.address && contact.city;
+    contact.customerName && contact.phone && contact.address && contact.city;
 
   async function handleSubmit() {
     setSubmitting(true);

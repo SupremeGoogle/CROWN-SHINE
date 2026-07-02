@@ -33,7 +33,7 @@ model Booking {
   // customer
   customerName String
   phone        String
-  email        String
+  email        String?
 
   // vehicle
   carMake   String

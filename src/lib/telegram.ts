@@ -25,7 +25,7 @@ export function formatBookingMessage(booking: Booking): string {
     "",
     `<b>Customer:</b> ${escapeHtml(booking.customerName)}`,
     `<b>Phone:</b> ${escapeHtml(booking.phone)}`,
-    `<b>Email:</b> ${escapeHtml(booking.email)}`,
+    `<b>Email:</b> ${escapeHtml(booking.email || "—")}`,
     `<b>Address:</b> ${escapeHtml(booking.address)}, ${escapeHtml(booking.city)}`,
   ];
   if (booking.notes) {

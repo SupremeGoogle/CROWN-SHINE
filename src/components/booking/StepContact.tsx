@@ -1,4 +1,8 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
+import { SelectMenu } from "@/components/ui/SelectMenu";
 
 export interface ContactValue {
   customerName: string;
@@ -20,6 +24,8 @@ export function StepContact({
   cities: string[];
 }) {
   const cityIsCustom = value.city !== "" && !cities.includes(value.city);
+  const [otherSelected, setOtherSelected] = useState(cityIsCustom);
+  const cityMenuValue = otherSelected ? "Other" : value.city;
 
   return (
     <div>
@@ -49,9 +55,8 @@ export function StepContact({
             className={inputClass}
           />
         </Field>
-        <Field label="Email" className="sm:col-span-2">
+        <Field label="Email (optional)" className="sm:col-span-2">
           <input
-            required
             type="email"
             value={value.email}
             onChange={(e) => onChange({ ...value, email: e.target.value })}
@@ -70,27 +75,26 @@ export function StepContact({
           />
         </Field>
         <Field label="City">
-          <select
-            value={cityIsCustom ? "Other" : value.city}
-            onChange={(e) =>
-              onChange({ ...value, city: e.target.value === "Other" ? "" : e.target.value })
-            }
-            className={inputClass}
-          >
-            <option value="">Select city</option>
-            {cities.map((c) => (
-              <option key={c} value={c}>
-                {c}
-              </option>
-            ))}
-            <option value="Other">Other</option>
-          </select>
+          <SelectMenu
+            options={[...cities, "Other"]}
+            value={cityMenuValue}
+            placeholder="Select city"
+            onChange={(c) => {
+              if (c === "Other") {
+                setOtherSelected(true);
+                onChange({ ...value, city: "" });
+              } else {
+                setOtherSelected(false);
+                onChange({ ...value, city: c });
+              }
+            }}
+          />
         </Field>
-        {(cityIsCustom || value.city === "") && (
+        {otherSelected && (
           <Field label="City (type yours)">
             <input
               type="text"
-              value={cityIsCustom ? value.city : ""}
+              value={value.city}
               onChange={(e) => onChange({ ...value, city: e.target.value })}
               placeholder="Enter your city"
               className={inputClass}
@@ -109,7 +113,8 @@ export function StepContact({
             }
             className="mt-0.5 h-4 w-4 accent-[var(--color-gold)]"
           />
-          Yes, send me promos and updates by email.
+          Yes, I&apos;d like to receive promotions, offers, and updates from Crown Shine by email.
+          I can unsubscribe at any time.
         </label>
         <label className="flex items-start gap-3 text-sm text-cream/75">
           <input
@@ -118,7 +123,9 @@ export function StepContact({
             onChange={(e) => onChange({ ...value, marketingSmsConsent: e.target.checked })}
             className="mt-0.5 h-4 w-4 accent-[var(--color-gold)]"
           />
-          Yes, text me promos and updates (msg &amp; data rates may apply, reply STOP to opt out).
+          Yes, I agree to receive promotional text messages from Crown Shine at the number above.
+          Consent is not a condition of purchase. Message &amp; data rates may apply; reply STOP to
+          opt out.
         </label>
         <p className="text-xs text-cream/45">
           We&apos;ll only use your info to schedule and confirm this appointment, plus

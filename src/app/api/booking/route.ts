@@ -6,7 +6,7 @@ import { notifyTelegramAdmins } from "@/lib/telegram";
 const bookingSchema = z.object({
   customerName: z.string().trim().min(1).max(200),
   phone: z.string().trim().min(7).max(30),
-  email: z.string().trim().email().max(200),
+  email: z.union([z.string().trim().email().max(200), z.literal("")]).optional(),
   address: z.string().trim().min(1).max(300),
   city: z.string().trim().min(1).max(120),
   carMake: z.string().trim().min(1).max(100),
@@ -52,7 +52,7 @@ export async function POST(request: NextRequest) {
     data: {
       customerName: data.customerName,
       phone: data.phone,
-      email: data.email,
+      email: data.email || null,
       address: data.address,
       city: data.city,
       carMake: data.carMake,
