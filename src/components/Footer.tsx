@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { CrownIcon } from "@/components/ui/Crown";
+import { BrandMark } from "@/components/ui/BrandMark";
 import { Phone, Mail } from "lucide-react";
 import { InstagramIcon } from "@/components/ui/InstagramIcon";
 import type { SiteContent } from "@/types/site-content";
@@ -10,7 +10,7 @@ export function Footer({ content }: { content: SiteContent }) {
       <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-3">
         <div>
           <div className="flex items-center gap-2">
-            <CrownIcon className="h-6 w-8 text-gold" />
+            <BrandMark className="h-7 w-9 text-gold" gold="currentColor" />
             <span className="font-display text-base tracking-widest">
               CROWN <span className="text-gold-gradient">SHINE</span>
             </span>

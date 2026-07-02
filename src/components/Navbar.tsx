@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { CrownIcon } from "@/components/ui/Crown";
+import { BrandMark } from "@/components/ui/BrandMark";
 import { ButtonLink } from "@/components/ui/Button";
 import { Menu, X } from "lucide-react";
 
@@ -34,7 +34,7 @@ export function Navbar() {
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         <Link href="/" className="flex items-center gap-2 group">
-          <CrownIcon className="h-7 w-9 text-gold transition-transform group-hover:-translate-y-0.5" />
+          <BrandMark className="h-8 w-10 text-gold transition-transform group-hover:-translate-y-0.5" gold="currentColor" />
           <span className="font-display text-lg tracking-[0.15em] text-cream">
             CROWN <span className="text-gold-gradient">SHINE</span>
           </span>

@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { ButtonLink } from "@/components/ui/Button";
-import { CrownIcon } from "@/components/ui/Crown";
+import { BrandMark } from "@/components/ui/BrandMark";
 
 export function CtaBanner() {
   return (
@@ -16,7 +16,7 @@ export function CtaBanner() {
         className="mx-auto max-w-4xl"
       >
         <GlassCard strong className="flex flex-col items-center gap-6 px-8 py-16 text-center gold-border-glow">
-          <CrownIcon className="h-10 w-14 text-gold" />
+          <BrandMark className="h-11 w-14 text-gold" gold="currentColor" />
           <h2 className="font-display text-3xl sm:text-4xl">
             Ready for Your <span className="text-gold-gradient">Crown-Level Shine?</span>
           </h2>

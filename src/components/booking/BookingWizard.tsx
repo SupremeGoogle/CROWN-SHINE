@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { Button } from "@/components/ui/Button";
-import { CrownIcon } from "@/components/ui/Crown";
+import { BrandMark } from "@/components/ui/BrandMark";
 import { StepVehicle } from "@/components/booking/StepVehicle";
 import { StepService } from "@/components/booking/StepService";
 import { StepSchedule } from "@/components/booking/StepSchedule";
@@ -105,7 +105,7 @@ export function BookingWizard({
   if (done) {
     return (
       <GlassCard strong className="mx-auto max-w-lg gold-border-glow p-10 text-center">
-        <CrownIcon className="mx-auto mb-4 h-10 w-14 text-gold" />
+        <BrandMark className="mx-auto mb-4 h-11 w-14 text-gold" gold="currentColor" />
         <h2 className="font-display text-2xl text-gold-gradient">You&apos;re All Set!</h2>
         <p className="mt-3 text-sm text-cream/70">
           Your booking request has been received. We&apos;ll reach out shortly to confirm

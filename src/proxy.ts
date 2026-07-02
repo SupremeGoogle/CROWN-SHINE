@@ -3,12 +3,23 @@ import { jwtVerify } from "jose";
 
 const SESSION_COOKIE_NAME = "cs_session";
 
+async function getSessionSecretKey(): Promise<Uint8Array | null> {
+  const password = process.env.ADMIN_PASSWORD;
+  if (!password) return null;
+  // Тот же вывод ключа, что и в src/lib/auth.ts.
+  const digest = await crypto.subtle.digest(
+    "SHA-256",
+    new TextEncoder().encode(`cs_session:${password}`)
+  );
+  return new Uint8Array(digest);
+}
+
 async function isValidSession(token: string | undefined): Promise<boolean> {
   if (!token) return false;
-  const secret = process.env.SESSION_SECRET;
-  if (!secret) return false;
+  const key = await getSessionSecretKey();
+  if (!key) return false;
   try {
-    const { payload } = await jwtVerify(token, new TextEncoder().encode(secret));
+    const { payload } = await jwtVerify(token, key);
     return payload.role === "admin";
   } catch {
     return false;

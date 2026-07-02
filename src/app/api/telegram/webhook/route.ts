@@ -19,19 +19,10 @@ async function sendMessage(token: string, chatId: number, text: string) {
 
 export async function POST(request: NextRequest) {
   const token = process.env.TELEGRAM_BOT_TOKEN;
-  const expectedSecret = process.env.TELEGRAM_WEBHOOK_SECRET;
   const adminCommand = (process.env.TELEGRAM_ADMIN_COMMAND || "/crownshine").toLowerCase();
 
   if (!token) {
     return NextResponse.json({ ok: true });
-  }
-
-  // Проверяем, что запрос действительно пришёл от Telegram
-  if (expectedSecret) {
-    const receivedSecret = request.headers.get("x-telegram-bot-api-secret-token");
-    if (receivedSecret !== expectedSecret) {
-      return NextResponse.json({ error: "Forbidden" }, { status: 403 });
-    }
   }
 
   let update: TelegramUpdate;

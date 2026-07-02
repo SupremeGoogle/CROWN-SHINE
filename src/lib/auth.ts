@@ -5,12 +5,18 @@ import { timingSafeEqual } from "crypto";
 export const SESSION_COOKIE_NAME = "cs_session";
 const SESSION_DURATION_SECONDS = 60 * 60 * 24 * 7; // 7 дней
 
-function getSessionSecretKey() {
-  const secret = process.env.SESSION_SECRET;
-  if (!secret) {
-    throw new Error("SESSION_SECRET не задан в переменных окружения");
+async function getSessionSecretKey(): Promise<Uint8Array> {
+  const password = process.env.ADMIN_PASSWORD;
+  if (!password) {
+    throw new Error("ADMIN_PASSWORD не задан в переменных окружения");
   }
-  return new TextEncoder().encode(secret);
+  // Ключ подписи JWT выводим из пароля админки, чтобы не заводить
+  // отдельную переменную окружения. SHA-256 даёт стабильные 32 байта.
+  const digest = await crypto.subtle.digest(
+    "SHA-256",
+    new TextEncoder().encode(`cs_session:${password}`)
+  );
+  return new Uint8Array(digest);
 }
 
 export function verifyAdminPassword(candidate: string): boolean {
@@ -29,12 +35,12 @@ export async function createSessionToken(): Promise<string> {
     .setProtectedHeader({ alg: "HS256" })
     .setIssuedAt()
     .setExpirationTime(`${SESSION_DURATION_SECONDS}s`)
-    .sign(getSessionSecretKey());
+    .sign(await getSessionSecretKey());
 }
 
 export async function verifySessionToken(token: string): Promise<boolean> {
   try {
-    const { payload } = await jwtVerify(token, getSessionSecretKey());
+    const { payload } = await jwtVerify(token, await getSessionSecretKey());
     return payload.role === "admin";
   } catch {
     return false;
