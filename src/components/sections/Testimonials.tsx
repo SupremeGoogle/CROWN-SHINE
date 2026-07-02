@@ -23,7 +23,7 @@ export function Testimonials({
           What Our <span className="text-gold-gradient">Clients Say</span>
         </motion.h2>
 
-        <div className="carousel-mobile mt-16 sm:grid sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
+        <div className="-mx-6 mt-16 flex snap-x snap-mandatory gap-5 overflow-x-auto px-6 pb-4 sm:gap-6">
           {testimonials.map((t, i) => (
             <motion.div
               key={t.name}
@@ -31,7 +31,7 @@ export function Testimonials({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.1 }}
-              className="w-[80%] shrink-0 snap-center sm:w-auto"
+              className="w-[82%] shrink-0 snap-center sm:w-[360px]"
             >
               <GlassCard className="flex h-full flex-col p-7">
                 <div className="flex gap-1 text-gold">

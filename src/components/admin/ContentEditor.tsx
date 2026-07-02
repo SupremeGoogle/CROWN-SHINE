@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { Button } from "@/components/ui/Button";
-import { Field, TextInput, TextArea, RemoveButton, AddButton } from "@/components/admin/fields";
+import { Field, TextInput, TextArea, RemoveButton, AddButton, ImageUploader } from "@/components/admin/fields";
 import type { SiteContent, ServicePackage, WhyUsIcon } from "@/types/site-content";
 import { WHY_US_ICONS } from "@/types/site-content";
 import { Check, AlertCircle } from "lucide-react";
@@ -285,10 +285,9 @@ export function ContentEditor() {
                         }}
                       />
                     </Field>
-                    <Field label="Photo URL (optional — leave blank to show a placeholder)" className="sm:col-span-2">
-                      <TextInput
+                    <Field label="Photo (upload from device or paste a URL — blank shows a placeholder)" className="sm:col-span-2">
+                      <ImageUploader
                         value={item.image ?? ""}
-                        placeholder="https://..."
                         onChange={(v) => {
                           const items = [...content.gallery.items];
                           items[i] = { ...items[i], image: v };
