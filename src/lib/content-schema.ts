@@ -94,4 +94,19 @@ export const siteContentSchema = z.object({
   footer: z.object({
     tagline: z.string().trim().min(1).max(200),
   }),
+  links: z
+    .object({
+      title: z.string().trim().max(120),
+      subtitle: z.string().trim().max(300),
+      items: z
+        .array(
+          z.object({
+            id: z.string(),
+            label: z.string().trim().min(1).max(60),
+            url: z.string().trim().min(1).max(500),
+          })
+        )
+        .max(30),
+    })
+    .optional(),
 });

@@ -18,6 +18,7 @@ const TABS = [
   "Testimonials",
   "FAQ",
   "Contact",
+  "Links",
 ] as const;
 
 export function ContentEditor() {
@@ -630,6 +631,70 @@ export function ContentEditor() {
             </Field>
           </div>
         )}
+
+        {tab === "Links" &&
+          (() => {
+            const links: NonNullable<SiteContent["links"]> =
+              content.links ?? { title: "", subtitle: "", items: [] };
+            const update = (l: NonNullable<SiteContent["links"]>) =>
+              setContent({ ...content, links: l });
+            return (
+              <div className="space-y-6">
+                <p className="text-sm text-cream/55">
+                  These buttons show on your public links page (<code className="text-gold/80">/links</code>) —
+                  perfect behind a QR code on business cards &amp; stickers.
+                </p>
+                <Field label="Page Title">
+                  <TextInput value={links.title} onChange={(v) => update({ ...links, title: v })} />
+                </Field>
+                <Field label="Subtitle">
+                  <TextArea value={links.subtitle} onChange={(v) => update({ ...links, subtitle: v })} />
+                </Field>
+                <div className="space-y-4">
+                  {links.items.map((item, i) => (
+                    <div key={item.id} className="rounded-xl border border-gold/15 p-5">
+                      <div className="grid gap-4 sm:grid-cols-2">
+                        <Field label="Button Label">
+                          <TextInput
+                            value={item.label}
+                            onChange={(v) => {
+                              const items = [...links.items];
+                              items[i] = { ...items[i], label: v };
+                              update({ ...links, items });
+                            }}
+                          />
+                        </Field>
+                        <Field label="URL (https://…, tel:…, or /book)">
+                          <TextInput
+                            value={item.url}
+                            onChange={(v) => {
+                              const items = [...links.items];
+                              items[i] = { ...items[i], url: v };
+                              update({ ...links, items });
+                            }}
+                          />
+                        </Field>
+                      </div>
+                      <div className="mt-4">
+                        <RemoveButton
+                          onClick={() => update({ ...links, items: links.items.filter((_, idx) => idx !== i) })}
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <AddButton
+                  label="Add Link"
+                  onClick={() =>
+                    update({
+                      ...links,
+                      items: [...links.items, { id: `link-${Date.now()}`, label: "", url: "" }],
+                    })
+                  }
+                />
+              </div>
+            );
+          })()}
       </GlassCard>
     </div>
   );

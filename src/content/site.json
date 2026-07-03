@@ -247,5 +247,17 @@
   },
   "footer": {
     "tagline": "Luxury mobile detailing across the Greater Seattle area."
+  },
+  "links": {
+    "title": "Crown Shine Mobile Detailing",
+    "subtitle": "Luxury mobile detailing across Greater Seattle. Tap below to book, call, or follow us.",
+    "items": [
+      { "id": "link-book", "label": "Book Your Detail", "url": "/book" },
+      { "id": "link-call", "label": "Call / Text Us", "url": "tel:2533788086" },
+      { "id": "link-site", "label": "Visit Our Website", "url": "/" },
+      { "id": "link-instagram", "label": "Instagram", "url": "https://instagram.com/crownshine_mobiledetailing" },
+      { "id": "link-tiktok", "label": "TikTok", "url": "https://www.tiktok.com/@crownshine_mobiledetailing" },
+      { "id": "link-google", "label": "Review us on Google", "url": "https://maps.app.goo.gl/WUVskDWHGsobAzhb6" }
+    ]
   }
 }

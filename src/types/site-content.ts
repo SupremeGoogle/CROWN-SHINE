@@ -64,4 +64,9 @@ export interface SiteContent {
   footer: {
     tagline: string;
   };
+  links?: {
+    title: string;
+    subtitle: string;
+    items: { id: string; label: string; url: string }[];
+  };
 }
