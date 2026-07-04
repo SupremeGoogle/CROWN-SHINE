@@ -31,12 +31,12 @@
   "services": [
     {
       "id": "express-shine",
-      "name": "Express Shine",
+      "name": "Exterior Shine",
       "price": "From $89",
       "duration": "~1 hour",
       "description": "A quick, thorough refresh for the driver who wants their car looking sharp on a budget.",
       "features": [
-        "Premium exterior hand wash & dry",
+        "Exterior hand wash & dry",
         "Wheels & tires cleaned",
         "Windows in & out"
       ]
