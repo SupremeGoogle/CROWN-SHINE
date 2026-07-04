@@ -1,7 +1,7 @@
 {
   "hero": {
     "eyebrow": "Luxury Mobile Detailing",
-    "title": "Your Crown Deserves to Shine!",
+    "title": "Your Crown Deserves to Shine",
     "subtitle": "Premium mobile car detailing that comes to you — anywhere in Seattle, Bellevue, Kirkland, Redmond, Issaquah and nearby cities.",
     "ctaLabel": "Book Your Detail",
     "secondaryCtaLabel": "View Services"
@@ -274,7 +274,7 @@
       },
       {
         "id": "link-tiktok",
-        "label": "TikTok",
+        "label": "TikTok!",
         "url": "https://www.tiktok.com/@crownshine_mobiledetailing"
       },
       {
