@@ -91,8 +91,11 @@
       "duration": "~3 hours",
       "description": "Restore the clean, fresh feel of your vehicle`s interior with a thorough detailing servise designed for regular maintenance vehicles.",
       "features": [
-        "Complete interior vacuum"
-      ]
+        "Complete interior vacuum",
+        "Cleaning of dashboard, central console, door panels and trim",
+        "Wipe down off all interior surfaces"
+      ],
+      "highlighted": true
     }
   ],
   "vehicleTypes": [
