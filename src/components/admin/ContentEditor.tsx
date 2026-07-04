@@ -6,12 +6,14 @@ import { Button } from "@/components/ui/Button";
 import { Field, TextInput, TextArea, RemoveButton, AddButton, ImageUploader } from "@/components/admin/fields";
 import type { SiteContent, ServicePackage, WhyUsIcon } from "@/types/site-content";
 import { WHY_US_ICONS } from "@/types/site-content";
+import { DEFAULT_VEHICLE_TYPES } from "@/lib/vehicles";
 import { Check, AlertCircle } from "lucide-react";
 
 const TABS = [
   "Hero",
   "About",
   "Services",
+  "Vehicles",
   "Gallery",
   "Why Us",
   "Service Area",
@@ -245,6 +247,97 @@ export function ContentEditor() {
             />
           </div>
         )}
+
+        {tab === "Vehicles" &&
+          (() => {
+            const types = content.vehicleTypes ?? DEFAULT_VEHICLE_TYPES;
+            const update = (v: NonNullable<SiteContent["vehicleTypes"]>) =>
+              setContent({ ...content, vehicleTypes: v });
+            return (
+              <div className="space-y-6">
+                <p className="text-sm text-cream/55">
+                  Vehicle types shown in the booking form. The starting price follows the type
+                  the customer picks, and only that type&apos;s models appear in the list.
+                </p>
+                {types.map((t, ti) => (
+                  <div key={t.id} className="rounded-xl border border-gold/15 p-5">
+                    <div className="grid gap-4 sm:grid-cols-2">
+                      <Field label="Type Name (e.g. Large SUV)">
+                        <TextInput
+                          value={t.name}
+                          onChange={(v) => {
+                            const arr = [...types];
+                            arr[ti] = { ...arr[ti], name: v };
+                            update(arr);
+                          }}
+                        />
+                      </Field>
+                      <Field label="Starting Price (e.g. From $110)">
+                        <TextInput
+                          value={t.price}
+                          onChange={(v) => {
+                            const arr = [...types];
+                            arr[ti] = { ...arr[ti], price: v };
+                            update(arr);
+                          }}
+                        />
+                      </Field>
+                    </div>
+                    <div className="mt-4">
+                      <label className="mb-1.5 block text-xs font-semibold uppercase tracking-widest text-gold/80">
+                        Models
+                      </label>
+                      <div className="space-y-2">
+                        {t.models.map((m, mi) => (
+                          <div key={mi} className="flex items-center gap-2">
+                            <TextInput
+                              value={m}
+                              onChange={(v) => {
+                                const arr = [...types];
+                                const models = [...arr[ti].models];
+                                models[mi] = v;
+                                arr[ti] = { ...arr[ti], models };
+                                update(arr);
+                              }}
+                            />
+                            <RemoveButton
+                              onClick={() => {
+                                const arr = [...types];
+                                arr[ti] = {
+                                  ...arr[ti],
+                                  models: arr[ti].models.filter((_, x) => x !== mi),
+                                };
+                                update(arr);
+                              }}
+                            />
+                          </div>
+                        ))}
+                      </div>
+                      <div className="mt-3">
+                        <AddButton
+                          label="Add Model"
+                          onClick={() => {
+                            const arr = [...types];
+                            arr[ti] = { ...arr[ti], models: [...arr[ti].models, ""] };
+                            update(arr);
+                          }}
+                        />
+                      </div>
+                    </div>
+                    <div className="mt-5 border-t border-gold/10 pt-4">
+                      <RemoveButton onClick={() => update(types.filter((_, x) => x !== ti))} />
+                    </div>
+                  </div>
+                ))}
+                <AddButton
+                  label="Add Vehicle Type"
+                  onClick={() =>
+                    update([...types, { id: `type-${Date.now()}`, name: "", price: "", models: [] }])
+                  }
+                />
+              </div>
+            );
+          })()}
 
         {tab === "Gallery" && (
           <div className="space-y-6">

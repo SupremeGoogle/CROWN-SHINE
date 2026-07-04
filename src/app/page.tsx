@@ -42,6 +42,7 @@ export default async function Home() {
           <BookingWizard
             services={content.services}
             cities={content.serviceArea.cities}
+            vehicleTypes={content.vehicleTypes}
           />
         </section>
       </main>

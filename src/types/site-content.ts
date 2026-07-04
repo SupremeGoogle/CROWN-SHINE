@@ -35,6 +35,7 @@ export interface SiteContent {
     stats: { label: string; value: string }[];
   };
   services: ServicePackage[];
+  vehicleTypes?: { id: string; name: string; price: string; models: string[] }[];
   serviceArea: {
     title: string;
     subtitle: string;

@@ -32,6 +32,17 @@ export const siteContentSchema = z.object({
       .max(12),
   }),
   services: z.array(servicePackageSchema).max(20),
+  vehicleTypes: z
+    .array(
+      z.object({
+        id: z.string(),
+        name: z.string().trim().min(1).max(60),
+        price: z.string().trim().max(50),
+        models: z.array(z.string().trim().min(1).max(80)).max(200),
+      })
+    )
+    .max(40)
+    .optional(),
   serviceArea: z.object({
     title: z.string().trim().min(1).max(200),
     subtitle: z.string().trim().min(1).max(400),

@@ -11,18 +11,22 @@ import { StepSchedule } from "@/components/booking/StepSchedule";
 import { StepContact } from "@/components/booking/StepContact";
 import type { CarValue } from "@/components/booking/CarPicker";
 import type { ServicePackage } from "@/types/site-content";
+import { DEFAULT_VEHICLE_TYPES, type VehicleType } from "@/lib/vehicles";
 
 const STEPS = ["Vehicle", "Service", "Schedule", "Contact"] as const;
 
 export function BookingWizard({
   services,
   cities,
+  vehicleTypes,
   preselectedServiceId,
 }: {
   services: ServicePackage[];
   cities: string[];
+  vehicleTypes?: VehicleType[];
   preselectedServiceId?: string;
 }) {
+  const types = vehicleTypes && vehicleTypes.length ? vehicleTypes : DEFAULT_VEHICLE_TYPES;
   const [step, setStep] = useState(0);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -68,6 +72,7 @@ export function BookingWizard({
     setError(null);
     try {
       const selectedService = services.find((s) => s.id === serviceId);
+      const selectedType = types.find((t) => t.name === car.category);
       const res = await fetch("/api/booking", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -81,7 +86,9 @@ export function BookingWizard({
           carModel: car.model,
           carYear: car.year || undefined,
           carSource: car.source,
-          vehicleCategory: car.category,
+          vehicleCategory: selectedType?.price
+            ? `${car.category} — ${selectedType.price}`
+            : car.category,
           serviceName: selectedService?.name ?? serviceId,
           notes: notes || undefined,
           preferredDate: date,
@@ -149,7 +156,9 @@ export function BookingWizard({
             exit={{ opacity: 0, x: -16 }}
             transition={{ duration: 0.25 }}
           >
-            {step === 0 && <StepVehicle value={car} onChange={setCar} />}
+            {step === 0 && (
+              <StepVehicle value={car} onChange={setCar} vehicleTypes={types} />
+            )}
             {step === 1 && (
               <StepService
                 services={services}

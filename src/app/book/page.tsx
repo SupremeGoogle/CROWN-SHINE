@@ -34,6 +34,7 @@ export default async function BookPage({
         <BookingWizard
           services={content.services}
           cities={content.serviceArea.cities}
+          vehicleTypes={content.vehicleTypes}
           preselectedServiceId={service}
         />
       </main>
