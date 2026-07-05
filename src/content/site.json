@@ -32,7 +32,7 @@
     {
       "id": "express-shine",
       "name": "Exterior Shine",
-      "price": "From $89",
+      "price": "From $90",
       "duration": "~1 hour",
       "description": "A quick, thorough refresh for the driver who wants their car looking sharp on a budget.",
       "features": [
@@ -44,14 +44,14 @@
     },
     {
       "id": "signature-detail",
-      "name": "Signature Detail",
-      "price": "From $189",
+      "name": "Complete Shine Detail",
+      "price": "From 270$",
       "duration": "~2.5 hours",
-      "description": "Our most popular package — a deep interior and exterior detail for a true crown-level shine.",
+      "description": "Our most popular package — an interior and exterior detail for a true crown-level shine.",
       "features": [
         "Everything in Express Shine",
         "Clay bar & hand wax",
-        "Deep interior shampoo",
+        "Foam pre-wash",
         "Leather cleaning & conditioning",
         "Trim & dash dressing"
       ],
@@ -74,7 +74,7 @@
     {
       "id": "ceramic-coating",
       "name": "Ceramic Coating",
-      "price": "From $599",
+      "price": "From $699",
       "duration": "Full day",
       "description": "Long-term paint protection with a deep, glass-like gloss that lasts for years.",
       "features": [
@@ -87,7 +87,7 @@
     {
       "id": "service-1783188224136",
       "name": "Interior Shine",
-      "price": "From 179",
+      "price": "From 180",
       "duration": "~3 hours",
       "description": "Restore the clean, fresh feel of your vehicle`s interior with a thorough detailing servise designed for regular maintenance vehicles.",
       "features": [
@@ -105,7 +105,7 @@
     {
       "id": "service-1783192330737",
       "name": "Deep Interior Shine",
-      "price": "From 279",
+      "price": "From 280",
       "duration": "~5 hours",
       "description": "Our most comprehensive interior cleaning service, designed for heavily soiled vehicles that require deep restoration and intensive cleaning.",
       "features": [
