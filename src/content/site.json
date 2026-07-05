@@ -60,8 +60,8 @@
     {
       "id": "full-royal-detail",
       "name": "Full Royal Detail",
-      "price": "From $700",
-      "duration": "~5-7 hours",
+      "price": "From $999",
+      "duration": "Full day",
       "description": "The ultimate transformation — showroom-level correction inside and out.",
       "features": [
         "Premium hand wash",
@@ -72,7 +72,15 @@
         "Bug & tar removal",
         "Door jamb cleaning",
         "One-step paint enhancement polish",
-        "Exterior & interior glass cleaned"
+        "Exterior & interior glass cleaned",
+        "Complete vacuuming",
+        "Steam cleaning",
+        "Shampoo & hot water extraction (carpets & seats if needed)",
+        "Leather deep cleaning & conditioning",
+        "Plastic, vinyl & trim cleaning",
+        "Odor treatment",
+        "Ozone treatment to eliminate odors + cabin air filter replacement",
+        "UV interior protection"
       ],
       "highlighted": true
     },
@@ -85,8 +93,8 @@
       "features": [
         "Paint decontamination",
         "Multi-stage paint correction",
-        "Professional-grade ceramic coating",
-        "9H hardness, hydrophobic finish"
+        "Professional-grade ceramic coating 1-7 years",
+        "Everything in Express Shine"
       ]
     },
     {
