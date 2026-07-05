@@ -38,7 +38,7 @@ export const siteContentSchema = z.object({
         id: z.string(),
         name: z.string().trim().min(1).max(60),
         price: z.string().trim().max(50),
-        models: z.array(z.string().trim().min(1).max(80)).max(200),
+        models: z.array(z.string().trim().min(1).max(80)).max(200).optional(),
         prices: z.record(z.string(), z.string().trim().max(50)).optional(),
       })
     )

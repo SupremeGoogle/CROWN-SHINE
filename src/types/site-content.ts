@@ -39,7 +39,7 @@ export interface SiteContent {
     id: string;
     name: string;
     price: string;
-    models: string[];
+    models?: string[];
     prices?: Record<string, string>;
   }[];
   serviceArea: {

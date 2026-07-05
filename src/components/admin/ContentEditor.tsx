@@ -37,7 +37,7 @@ function cleanContent(content: SiteContent): SiteContent {
     services: content.services.map((sv) => ({ ...sv, features: strArr(sv.features) })),
     vehicleTypes: content.vehicleTypes
       ? content.vehicleTypes
-          .map((v) => ({ ...v, models: strArr(v.models) }))
+          .map((v) => (v.models ? { ...v, models: strArr(v.models) } : v))
           .filter((v) => s(v.name))
       : content.vehicleTypes,
     serviceArea: { ...content.serviceArea, cities: strArr(content.serviceArea.cities) },
@@ -290,8 +290,9 @@ export function ContentEditor() {
             return (
               <div className="space-y-6">
                 <p className="text-sm text-cream/55">
-                  Vehicle types shown in the booking form. The starting price follows the type
-                  the customer picks, and only that type&apos;s models appear in the list.
+                  Vehicle types shown in the booking form. The customer picks a type (which sets
+                  the price) and types their own make &amp; model. Set a starting price per
+                  service for each type below.
                 </p>
                 {types.map((t, ti) => (
                   <div key={t.id} className="rounded-xl border border-gold/15 p-5">
@@ -316,47 +317,6 @@ export function ContentEditor() {
                           }}
                         />
                       </Field>
-                    </div>
-                    <div className="mt-4">
-                      <label className="mb-1.5 block text-xs font-semibold uppercase tracking-widest text-gold/80">
-                        Models
-                      </label>
-                      <div className="space-y-2">
-                        {t.models.map((m, mi) => (
-                          <div key={mi} className="flex items-center gap-2">
-                            <TextInput
-                              value={m}
-                              onChange={(v) => {
-                                const arr = [...types];
-                                const models = [...arr[ti].models];
-                                models[mi] = v;
-                                arr[ti] = { ...arr[ti], models };
-                                update(arr);
-                              }}
-                            />
-                            <RemoveButton
-                              onClick={() => {
-                                const arr = [...types];
-                                arr[ti] = {
-                                  ...arr[ti],
-                                  models: arr[ti].models.filter((_, x) => x !== mi),
-                                };
-                                update(arr);
-                              }}
-                            />
-                          </div>
-                        ))}
-                      </div>
-                      <div className="mt-3">
-                        <AddButton
-                          label="Add Model"
-                          onClick={() => {
-                            const arr = [...types];
-                            arr[ti] = { ...arr[ti], models: [...arr[ti].models, ""] };
-                            update(arr);
-                          }}
-                        />
-                      </div>
                     </div>
                     <div className="mt-5">
                       <label className="mb-1.5 block text-xs font-semibold uppercase tracking-widest text-gold/80">
@@ -390,7 +350,7 @@ export function ContentEditor() {
                 <AddButton
                   label="Add Vehicle Type"
                   onClick={() =>
-                    update([...types, { id: `type-${Date.now()}`, name: "", price: "", models: [] }])
+                    update([...types, { id: `type-${Date.now()}`, name: "", price: "" }])
                   }
                 />
               </div>
