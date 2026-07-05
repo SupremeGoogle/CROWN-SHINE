@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { Trash2, Plus, Upload } from "lucide-react";
+import { Trash2, Plus, Upload, ChevronUp, ChevronDown } from "lucide-react";
 
 export const inputClass =
   "w-full rounded-lg border border-gold/25 bg-ink-soft/60 px-3 py-2.5 text-sm text-cream placeholder:text-cream/30 outline-none focus:border-gold/60";
@@ -156,6 +156,31 @@ export function ImageUploader({
       </div>
       <TextInput value={value} placeholder="…or paste an image URL" onChange={onChange} />
       {error && <p className="text-xs text-red-400">{error}</p>}
+    </div>
+  );
+}
+
+export function MoveButtons({
+  onUp,
+  onDown,
+  canUp,
+  canDown,
+}: {
+  onUp: () => void;
+  onDown: () => void;
+  canUp: boolean;
+  canDown: boolean;
+}) {
+  const btn =
+    "flex h-7 w-7 items-center justify-center rounded-md border border-gold/25 text-cream/60 transition hover:border-gold/50 hover:text-gold disabled:opacity-25 disabled:hover:border-gold/25 disabled:hover:text-cream/60";
+  return (
+    <div className="flex gap-1">
+      <button type="button" onClick={onUp} disabled={!canUp} className={btn} aria-label="Move up">
+        <ChevronUp size={14} />
+      </button>
+      <button type="button" onClick={onDown} disabled={!canDown} className={btn} aria-label="Move down">
+        <ChevronDown size={14} />
+      </button>
     </div>
   );
 }

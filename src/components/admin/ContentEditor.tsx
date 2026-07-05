@@ -3,7 +3,15 @@
 import { useEffect, useState } from "react";
 import { GlassCard } from "@/components/ui/GlassCard";
 import { Button } from "@/components/ui/Button";
-import { Field, TextInput, TextArea, RemoveButton, AddButton, ImageUploader } from "@/components/admin/fields";
+import {
+  Field,
+  TextInput,
+  TextArea,
+  RemoveButton,
+  AddButton,
+  ImageUploader,
+  MoveButtons,
+} from "@/components/admin/fields";
 import type { SiteContent, ServicePackage, WhyUsIcon } from "@/types/site-content";
 import { WHY_US_ICONS } from "@/types/site-content";
 import { DEFAULT_VEHICLE_TYPES } from "@/lib/vehicles";
@@ -23,6 +31,13 @@ const TABS = [
   "Links",
 ] as const;
 
+function swap<T>(arr: T[], a: number, b: number): T[] {
+  if (b < 0 || b >= arr.length) return arr;
+  const copy = [...arr];
+  [copy[a], copy[b]] = [copy[b], copy[a]];
+  return copy;
+}
+
 /**
  * Убирает пустые строки в списках и полностью пустые строки-элементы перед
  * сохранением, чтобы забытая пустая строка (например, пустая модель авто) не
@@ -40,6 +55,10 @@ function cleanContent(content: SiteContent): SiteContent {
           .map((v) => (v.models ? { ...v, models: strArr(v.models) } : v))
           .filter((v) => s(v.name))
       : content.vehicleTypes,
+    contact: {
+      ...content.contact,
+      socials: content.contact.socials?.filter((x) => s(x.label) || s(x.url)),
+    },
     serviceArea: { ...content.serviceArea, cities: strArr(content.serviceArea.cities) },
     testimonials: content.testimonials.filter((t) => s(t.name) || s(t.quote)),
     gallery: {
@@ -246,19 +265,33 @@ export function ContentEditor() {
         {tab === "Services" && (
           <div className="space-y-6">
             {content.services.map((s, i) => (
-              <ServiceEditor
-                key={i}
-                service={s}
-                onChange={(updated) => {
-                  const services = [...content.services];
-                  services[i] = updated;
-                  setContent({ ...content, services });
-                }}
-                onRemove={() => {
-                  const services = content.services.filter((_, idx) => idx !== i);
-                  setContent({ ...content, services });
-                }}
-              />
+              <div key={s.id || i}>
+                <div className="mb-2 flex items-center justify-between gap-3">
+                  <span className="text-xs font-semibold uppercase tracking-widest text-gold/60">
+                    {i + 1}. {s.name || "Untitled service"}
+                  </span>
+                  <MoveButtons
+                    canUp={i > 0}
+                    canDown={i < content.services.length - 1}
+                    onUp={() => setContent({ ...content, services: swap(content.services, i, i - 1) })}
+                    onDown={() =>
+                      setContent({ ...content, services: swap(content.services, i, i + 1) })
+                    }
+                  />
+                </div>
+                <ServiceEditor
+                  service={s}
+                  onChange={(updated) => {
+                    const services = [...content.services];
+                    services[i] = updated;
+                    setContent({ ...content, services });
+                  }}
+                  onRemove={() => {
+                    const services = content.services.filter((_, idx) => idx !== i);
+                    setContent({ ...content, services });
+                  }}
+                />
+              </div>
             ))}
             <AddButton
               label="Add Service Package"
@@ -740,6 +773,58 @@ export function ContentEditor() {
                 onChange={(v) => setContent({ ...content, footer: { tagline: v } })}
               />
             </Field>
+            <div className="sm:col-span-2">
+              {(() => {
+                const socials = content.contact.socials ?? [];
+                const upd = (arr: NonNullable<SiteContent["contact"]["socials"]>) =>
+                  setContent({ ...content, contact: { ...content.contact, socials: arr } });
+                return (
+                  <>
+                    <label className="mb-1.5 block text-xs font-semibold uppercase tracking-widest text-gold/80">
+                      Extra Contact Links (TikTok, Google, Facebook…)
+                    </label>
+                    <p className="mb-3 text-xs text-cream/45">
+                      These appear in the site footer next to your phone &amp; Instagram.
+                    </p>
+                    <div className="space-y-2">
+                      {socials.map((soc, i) => (
+                        <div key={soc.id} className="flex flex-wrap items-center gap-2">
+                          <div className="min-w-[120px] flex-1">
+                            <TextInput
+                              value={soc.label}
+                              placeholder="Label (e.g. TikTok)"
+                              onChange={(v) => {
+                                const arr = [...socials];
+                                arr[i] = { ...arr[i], label: v };
+                                upd(arr);
+                              }}
+                            />
+                          </div>
+                          <div className="min-w-[160px] flex-[2]">
+                            <TextInput
+                              value={soc.url}
+                              placeholder="https://…"
+                              onChange={(v) => {
+                                const arr = [...socials];
+                                arr[i] = { ...arr[i], url: v };
+                                upd(arr);
+                              }}
+                            />
+                          </div>
+                          <RemoveButton onClick={() => upd(socials.filter((_, x) => x !== i))} />
+                        </div>
+                      ))}
+                    </div>
+                    <div className="mt-3">
+                      <AddButton
+                        label="Add Contact Link"
+                        onClick={() => upd([...socials, { id: `soc-${Date.now()}`, label: "", url: "" }])}
+                      />
+                    </div>
+                  </>
+                );
+              })()}
+            </div>
           </div>
         )}
 

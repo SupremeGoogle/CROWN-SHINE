@@ -102,6 +102,16 @@ export const siteContentSchema = z.object({
     instagram: z.string().trim().url().max(300),
     instagramHandle: z.string().trim().min(1).max(60),
     hours: z.string().trim().min(1).max(200),
+    socials: z
+      .array(
+        z.object({
+          id: z.string(),
+          label: z.string().trim().min(1).max(60),
+          url: z.string().trim().min(1).max(500),
+        })
+      )
+      .max(20)
+      .optional(),
   }),
   footer: z.object({
     tagline: z.string().trim().min(1).max(200),

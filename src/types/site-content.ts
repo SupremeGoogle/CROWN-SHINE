@@ -67,6 +67,7 @@ export interface SiteContent {
     instagram: string;
     instagramHandle: string;
     hours: string;
+    socials?: { id: string; label: string; url: string }[];
   };
   footer: {
     tagline: string;

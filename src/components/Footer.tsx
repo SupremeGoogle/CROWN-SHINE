@@ -1,7 +1,17 @@
 import Link from "next/link";
-import { Phone } from "lucide-react";
+import { Phone, Music2, Star, Globe, Link as LinkIcon } from "lucide-react";
 import { InstagramIcon } from "@/components/ui/InstagramIcon";
 import type { SiteContent } from "@/types/site-content";
+
+function socialIcon(label: string, url: string) {
+  const t = `${label} ${url}`.toLowerCase();
+  if (/instagram/.test(t)) return InstagramIcon;
+  if (/tiktok/.test(t)) return Music2;
+  if (/google|maps|review|yelp/.test(t)) return Star;
+  if (url.startsWith("tel:") || /whatsapp|call|phone/.test(t)) return Phone;
+  if (/website|site/.test(t)) return Globe;
+  return LinkIcon;
+}
 
 export function Footer({ content }: { content: SiteContent }) {
   return (
@@ -35,6 +45,20 @@ export function Footer({ content }: { content: SiteContent }) {
           >
             <InstagramIcon size={15} /> {content.contact.instagramHandle}
           </a>
+          {content.contact.socials?.map((soc) => {
+            const Icon = socialIcon(soc.label, soc.url);
+            return (
+              <a
+                key={soc.id}
+                href={soc.url}
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-2 hover:text-gold"
+              >
+                <Icon size={15} /> {soc.label}
+              </a>
+            );
+          })}
           <p className="pt-1 text-cream/50">{content.contact.hours}</p>
         </div>
 
