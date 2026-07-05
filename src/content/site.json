@@ -124,6 +124,21 @@
         "Odor reduction treatment"
       ],
       "highlighted": true
+    },
+    {
+      "id": "service-1783272595566",
+      "name": "Royal Shine Polish",
+      "price": "From 599$",
+      "duration": "~6 hours",
+      "description": "Elevate your vehicle’s finish with our Royal Shine Polish. Using professional machine polishing techniques, we refine the paint surface by reducing swirl marks, light scratches, oxidation, and other minor imperfections—revealing exceptional gloss, depth, clarity, and a true showroom-quality shine.",
+      "features": [
+        "Everything in Express Shine",
+        "Paint decontamination",
+        "Clay bar treatment",
+        "Iron decontamination",
+        "Multi-stage paint correction",
+        "Ceramic spray sealant"
+      ]
     }
   ],
   "vehicleTypes": [
