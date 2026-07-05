@@ -32,7 +32,7 @@
     {
       "id": "express-shine",
       "name": "Exterior Shine",
-      "price": "From $90",
+      "price": "From 90$",
       "duration": "~1 hour",
       "description": "A quick, thorough refresh for the driver who wants their car looking sharp on a budget.",
       "features": [
@@ -60,7 +60,7 @@
     {
       "id": "full-royal-detail",
       "name": "Full Royal Detail",
-      "price": "From $999",
+      "price": "From 999$",
       "duration": "Full day",
       "description": "The ultimate transformation — showroom-level correction inside and out.",
       "features": [
@@ -87,7 +87,7 @@
     {
       "id": "ceramic-coating",
       "name": "Crown Ceramic Coating",
-      "price": "From $999",
+      "price": "From 999$",
       "duration": "Full day",
       "description": "Long-term paint protection with a deep, glass-like gloss that lasts for years.",
       "features": [
@@ -95,12 +95,13 @@
         "Multi-stage paint correction",
         "Professional-grade ceramic coating 1-7 years",
         "Everything in Express Shine"
-      ]
+      ],
+      "highlighted": false
     },
     {
       "id": "service-1783188224136",
       "name": "Interior Shine",
-      "price": "From 180",
+      "price": "From 180$",
       "duration": "~3 hours",
       "description": "Restore the clean, fresh feel of your vehicle`s interior with a thorough detailing servise designed for regular maintenance vehicles.",
       "features": [
@@ -118,7 +119,7 @@
     {
       "id": "service-1783192330737",
       "name": "Deep Interior Shine",
-      "price": "From 280",
+      "price": "From 280$",
       "duration": "~5 hours",
       "description": "Our most comprehensive interior cleaning service, designed for heavily soiled vehicles that require deep restoration and intensive cleaning.",
       "features": [
@@ -129,7 +130,8 @@
         "Deep stain treatment",
         "Pet hair removal",
         "Odor reduction treatment"
-      ]
+      ],
+      "highlighted": true
     }
   ],
   "vehicleTypes": [
