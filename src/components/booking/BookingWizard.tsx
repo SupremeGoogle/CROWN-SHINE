@@ -73,6 +73,7 @@ export function BookingWizard({
     try {
       const selectedService = services.find((s) => s.id === serviceId);
       const selectedType = types.find((t) => t.name === car.category);
+      const quotePrice = selectedType?.prices?.[serviceId] || selectedType?.price || "";
       const res = await fetch("/api/booking", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -86,9 +87,7 @@ export function BookingWizard({
           carModel: car.model,
           carYear: car.year || undefined,
           carSource: car.source,
-          vehicleCategory: selectedType?.price
-            ? `${car.category} — ${selectedType.price}`
-            : car.category,
+          vehicleCategory: quotePrice ? `${car.category} · ${quotePrice}` : car.category,
           serviceName: selectedService?.name ?? serviceId,
           notes: notes || undefined,
           preferredDate: date,
@@ -166,6 +165,7 @@ export function BookingWizard({
                 onSelect={setServiceId}
                 notes={notes}
                 onNotesChange={setNotes}
+                vehicleType={types.find((t) => t.name === car.category)}
               />
             )}
             {step === 2 && (

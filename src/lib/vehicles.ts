@@ -23,6 +23,8 @@ export interface VehicleType {
   name: string;
   price: string;
   models: string[];
+  /** Optional per-service starting price, keyed by service id. */
+  prices?: Record<string, string>;
 }
 
 export const DEFAULT_VEHICLE_TYPES: VehicleType[] = [
@@ -42,18 +44,36 @@ export const DEFAULT_VEHICLE_TYPES: VehicleType[] = [
       "Kia K5",
       "Lexus ES",
     ],
+    prices: {
+      "express-shine": "From $89",
+      "signature-detail": "From $189",
+      "full-royal-detail": "From $349",
+      "ceramic-coating": "From $599",
+    },
   },
   {
     id: "type-coupe",
     name: "Coupe",
     price: "From $89",
     models: ["BMW M4", "Ford Mustang", "Chevrolet Camaro", "Dodge Challenger", "Audi A5"],
+    prices: {
+      "express-shine": "From $89",
+      "signature-detail": "From $189",
+      "full-royal-detail": "From $349",
+      "ceramic-coating": "From $599",
+    },
   },
   {
     id: "type-hatchback",
     name: "Hatchback",
     price: "From $89",
     models: ["Volkswagen Golf", "Mazda 3", "Toyota Corolla Hatchback", "Honda Civic Hatchback"],
+    prices: {
+      "express-shine": "From $89",
+      "signature-detail": "From $189",
+      "full-royal-detail": "From $349",
+      "ceramic-coating": "From $599",
+    },
   },
   {
     id: "type-small-suv",
@@ -69,6 +89,12 @@ export const DEFAULT_VEHICLE_TYPES: VehicleType[] = [
       "Subaru Forester",
       "Audi Q5",
     ],
+    prices: {
+      "express-shine": "From $99",
+      "signature-detail": "From $199",
+      "full-royal-detail": "From $359",
+      "ceramic-coating": "From $609",
+    },
   },
   {
     id: "type-large-suv",
@@ -84,17 +110,35 @@ export const DEFAULT_VEHICLE_TYPES: VehicleType[] = [
       "GMC Yukon",
       "Mercedes-Benz GLE",
     ],
+    prices: {
+      "express-shine": "From $110",
+      "signature-detail": "From $210",
+      "full-royal-detail": "From $370",
+      "ceramic-coating": "From $620",
+    },
   },
   {
     id: "type-truck",
     name: "Truck",
     price: "From $110",
     models: ["Ford F-150", "Chevrolet Silverado", "RAM 1500", "Toyota Tundra", "GMC Sierra"],
+    prices: {
+      "express-shine": "From $110",
+      "signature-detail": "From $210",
+      "full-royal-detail": "From $370",
+      "ceramic-coating": "From $620",
+    },
   },
   {
     id: "type-minivan",
     name: "Minivan",
     price: "From $109",
     models: ["Honda Odyssey", "Toyota Sienna", "Chrysler Pacifica", "Kia Carnival"],
+    prices: {
+      "express-shine": "From $105",
+      "signature-detail": "From $205",
+      "full-royal-detail": "From $365",
+      "ceramic-coating": "From $615",
+    },
   },
 ];

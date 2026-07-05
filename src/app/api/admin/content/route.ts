@@ -11,8 +11,15 @@ export async function PUT(request: NextRequest) {
   const body = await request.json().catch(() => null);
   const parsed = siteContentSchema.safeParse(body);
   if (!parsed.success) {
+    const first = parsed.error.issues[0];
+    const where = first?.path.length ? first.path.join(" → ") : "";
     return NextResponse.json(
-      { error: "Validation failed", details: parsed.error.flatten() },
+      {
+        error: where
+          ? `Please check "${where}" — ${first.message}`
+          : "Validation failed. Please check your fields.",
+        issues: parsed.error.issues.map((i) => ({ path: i.path.join("."), message: i.message })),
+      },
       { status: 400 }
     );
   }

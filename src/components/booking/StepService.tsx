@@ -1,5 +1,6 @@
 import { Check } from "lucide-react";
 import type { ServicePackage } from "@/types/site-content";
+import type { VehicleType } from "@/lib/vehicles";
 
 export function StepService({
   services,
@@ -7,18 +8,22 @@ export function StepService({
   onSelect,
   notes,
   onNotesChange,
+  vehicleType,
 }: {
   services: ServicePackage[];
   selectedId: string;
   onSelect: (id: string) => void;
   notes: string;
   onNotesChange: (notes: string) => void;
+  vehicleType?: VehicleType;
 }) {
   return (
     <div>
       <h2 className="font-display text-2xl text-cream">Choose Your Service</h2>
       <p className="mt-1 mb-6 text-sm text-cream/60">
-        Select the package that fits your car&apos;s needs.
+        {vehicleType
+          ? `Prices shown for your ${vehicleType.name}. Select the package that fits your car's needs.`
+          : "Select the package that fits your car's needs."}
       </p>
 
       <div className="grid gap-4 sm:grid-cols-2">
@@ -38,7 +43,9 @@ export function StepService({
               <div className="flex items-start justify-between">
                 <div>
                   <p className="font-display text-lg text-cream">{s.name}</p>
-                  <p className="text-sm font-semibold text-gold">{s.price}</p>
+                  <p className="text-sm font-semibold text-gold">
+                    {vehicleType?.prices?.[s.id] || s.price}
+                  </p>
                   <p className="text-xs text-cream/50">{s.duration}</p>
                 </div>
                 {active && (

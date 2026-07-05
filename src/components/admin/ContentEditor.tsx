@@ -23,6 +23,40 @@ const TABS = [
   "Links",
 ] as const;
 
+/**
+ * Убирает пустые строки в списках и полностью пустые строки-элементы перед
+ * сохранением, чтобы забытая пустая строка (например, пустая модель авто) не
+ * роняла валидацию. Частично заполненные элементы остаются — их поймает
+ * валидатор и покажет конкретное поле.
+ */
+function cleanContent(content: SiteContent): SiteContent {
+  const s = (v: string | undefined) => (v ?? "").trim();
+  const strArr = (a: string[]) => a.map((x) => x.trim()).filter(Boolean);
+  return {
+    ...content,
+    services: content.services.map((sv) => ({ ...sv, features: strArr(sv.features) })),
+    vehicleTypes: content.vehicleTypes
+      ? content.vehicleTypes
+          .map((v) => ({ ...v, models: strArr(v.models) }))
+          .filter((v) => s(v.name))
+      : content.vehicleTypes,
+    serviceArea: { ...content.serviceArea, cities: strArr(content.serviceArea.cities) },
+    testimonials: content.testimonials.filter((t) => s(t.name) || s(t.quote)),
+    gallery: {
+      ...content.gallery,
+      items: content.gallery.items.filter((i) => s(i.caption) || s(i.tag) || s(i.image)),
+    },
+    whyUs: {
+      ...content.whyUs,
+      items: content.whyUs.items.filter((i) => s(i.title) || s(i.description)),
+    },
+    faq: { ...content.faq, items: content.faq.items.filter((i) => s(i.question) || s(i.answer)) },
+    links: content.links
+      ? { ...content.links, items: content.links.items.filter((i) => s(i.label) || s(i.url)) }
+      : content.links,
+  };
+}
+
 export function ContentEditor() {
   const [content, setContent] = useState<SiteContent | null>(null);
   const [tab, setTab] = useState<(typeof TABS)[number]>("Hero");
@@ -45,7 +79,7 @@ export function ContentEditor() {
       const res = await fetch("/api/admin/content", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(content),
+        body: JSON.stringify(cleanContent(content)),
       });
       if (!res.ok) {
         const data = await res.json().catch(() => ({}));
@@ -322,6 +356,30 @@ export function ContentEditor() {
                             update(arr);
                           }}
                         />
+                      </div>
+                    </div>
+                    <div className="mt-5">
+                      <label className="mb-1.5 block text-xs font-semibold uppercase tracking-widest text-gold/80">
+                        Starting Price per Service
+                      </label>
+                      <div className="grid gap-3 sm:grid-cols-2">
+                        {content.services.map((svc) => (
+                          <div key={svc.id}>
+                            <span className="mb-1 block text-[11px] text-cream/55">{svc.name}</span>
+                            <TextInput
+                              value={t.prices?.[svc.id] ?? ""}
+                              placeholder={svc.price}
+                              onChange={(v) => {
+                                const arr = [...types];
+                                arr[ti] = {
+                                  ...arr[ti],
+                                  prices: { ...(arr[ti].prices ?? {}), [svc.id]: v },
+                                };
+                                update(arr);
+                              }}
+                            />
+                          </div>
+                        ))}
                       </div>
                     </div>
                     <div className="mt-5 border-t border-gold/10 pt-4">
