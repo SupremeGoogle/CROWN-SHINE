@@ -61,7 +61,7 @@
       "id": "full-royal-detail",
       "name": "Full Royal Detail",
       "price": "From $700",
-      "duration": "~6-8 hours",
+      "duration": "~5-7 hours",
       "description": "The ultimate transformation — showroom-level correction inside and out.",
       "features": [
         "Premium hand wash",
@@ -73,12 +73,13 @@
         "Door jamb cleaning",
         "One-step paint enhancement polish",
         "Exterior & interior glass cleaned"
-      ]
+      ],
+      "highlighted": true
     },
     {
       "id": "ceramic-coating",
-      "name": "Ceramic Coating",
-      "price": "From $699",
+      "name": "Crown Ceramic Coating",
+      "price": "From $999",
       "duration": "Full day",
       "description": "Long-term paint protection with a deep, glass-like gloss that lasts for years.",
       "features": [
