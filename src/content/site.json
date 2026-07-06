@@ -64,15 +64,13 @@
         "Everything in Express Shine",
         "Engine bay detailing",
         "Ceramic spray sealant",
-        "Wheels, tires & wheel wells deep cleaned",
         "Iron remover & clay bar decontamination",
         "Bug & tar removal",
         "One-step paint enhancement polish",
-        "Exterior & interior glass cleaned",
         "Everything in Deep Interior Shine",
-        "Plastic, vinyl & trim cleaning",
         "Odor treatment",
-        "Ozone treatment to eliminate odors + cabin air filter replacement"
+        "Ozone treatment to eliminate odors + cabin air filter replacement",
+        "Headlight Clarity Restoration"
       ],
       "highlighted": true
     },
@@ -142,14 +140,46 @@
     }
   ],
   "vehicleTypes": [
-    { "id": "type-sedan", "name": "Sedan", "price": "From $89" },
-    { "id": "type-coupe", "name": "Coupe", "price": "From $89" },
-    { "id": "type-hatchback", "name": "Hatchback", "price": "From $89" },
-    { "id": "type-convertible", "name": "Convertible", "price": "From $99" },
-    { "id": "type-small-suv", "name": "Small SUV / Small Truck", "price": "From $99" },
-    { "id": "type-large-suv", "name": "Large SUV / Large Truck", "price": "From $119" },
-    { "id": "type-rv", "name": "RV", "price": "From $199" },
-    { "id": "type-boat", "name": "Boat", "price": "From $199" }
+    {
+      "id": "type-sedan",
+      "name": "Sedan",
+      "price": "From $89"
+    },
+    {
+      "id": "type-coupe",
+      "name": "Coupe",
+      "price": "From $89"
+    },
+    {
+      "id": "type-hatchback",
+      "name": "Hatchback",
+      "price": "From $89"
+    },
+    {
+      "id": "type-convertible",
+      "name": "Convertible",
+      "price": "From $99"
+    },
+    {
+      "id": "type-small-suv",
+      "name": "Small SUV / Small Truck",
+      "price": "From $99"
+    },
+    {
+      "id": "type-large-suv",
+      "name": "Large SUV / Large Truck",
+      "price": "From $119"
+    },
+    {
+      "id": "type-rv",
+      "name": "RV",
+      "price": "From $199"
+    },
+    {
+      "id": "type-boat",
+      "name": "Boat",
+      "price": "From $199"
+    }
   ],
   "serviceArea": {
     "title": "Where We Shine",
