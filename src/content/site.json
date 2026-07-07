@@ -144,32 +144,86 @@
     {
       "id": "type-sedan",
       "name": "Sedan",
-      "price": "From $89"
+      "price": "From 90$",
+      "prices": {
+        "express-shine": "From 90$",
+        "service-1783188224136": "From 180$",
+        "service-1783192330737": "From 280$",
+        "signature-detail": "From 270$",
+        "full-royal-detail": "From 999$",
+        "service-1783272595566": "From 599$",
+        "ceramic-coating": "From 999$"
+      }
     },
     {
       "id": "type-coupe",
       "name": "Coupe",
-      "price": "From $89"
+      "price": "From 90$",
+      "prices": {
+        "express-shine": "From 90$",
+        "service-1783188224136": "From 180$",
+        "service-1783192330737": "From 280$",
+        "signature-detail": "From 270$",
+        "full-royal-detail": "From 999$",
+        "service-1783272595566": "From 599$",
+        "ceramic-coating": "From 999$"
+      }
     },
     {
       "id": "type-hatchback",
       "name": "Hatchback",
-      "price": "From $89"
+      "price": "From 90$",
+      "prices": {
+        "express-shine": "From 90$",
+        "service-1783188224136": "From 180$",
+        "service-1783192330737": "From 280$",
+        "signature-detail": "From 270$",
+        "full-royal-detail": "From 999$",
+        "service-1783272595566": "From 599$",
+        "ceramic-coating": "From 999$"
+      }
     },
     {
       "id": "type-convertible",
       "name": "Convertible",
-      "price": "From $99"
+      "price": "From $100",
+      "prices": {
+        "express-shine": "From 100$",
+        "service-1783188224136": "From 180$",
+        "service-1783192330737": "From 280$",
+        "signature-detail": "From 280$",
+        "full-royal-detail": "From 999$",
+        "service-1783272595566": "From 599$",
+        "ceramic-coating": "From 999$"
+      }
     },
     {
       "id": "type-small-suv",
       "name": "Small SUV / Small Truck",
-      "price": "From $99"
+      "price": "From $99",
+      "prices": {
+        "express-shine": "From 100$",
+        "service-1783188224136": "From 190$",
+        "service-1783192330737": "From 290$",
+        "signature-detail": "From 290$",
+        "full-royal-detail": "From 1199$",
+        "service-1783272595566": "From 699$",
+        "ceramic-coating": "From 1099$"
+      }
     },
     {
       "id": "type-large-suv",
       "name": "Large SUV / Large Truck",
-      "price": "From $119"
+      "price": "From $120",
+      "prices": {
+        "express-shine": "From 120$",
+        "service-1783188224136": "From 200$",
+        "service-1783192330737": "From 300$",
+        "signature-detail": "From 320$",
+        "full-royal-detail": "From 1499$",
+        "service-1783272595566": "From 799$",
+        "ceramic-coating": "From 1199$"
+      }
     },
     {
       "id": "type-rv",
