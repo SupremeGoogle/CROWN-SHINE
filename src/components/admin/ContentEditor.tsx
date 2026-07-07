@@ -23,6 +23,7 @@ const TABS = [
   "Services",
   "Vehicles",
   "Gallery",
+  "Before / After",
   "Why Us",
   "Service Area",
   "Testimonials",
@@ -65,6 +66,12 @@ function cleanContent(content: SiteContent): SiteContent {
       ...content.gallery,
       items: content.gallery.items.filter((i) => s(i.caption) || s(i.tag) || s(i.image)),
     },
+    beforeAfter: content.beforeAfter
+      ? {
+          ...content.beforeAfter,
+          items: content.beforeAfter.items.filter((i) => s(i.label) || s(i.before) || s(i.after)),
+        }
+      : content.beforeAfter,
     whyUs: {
       ...content.whyUs,
       items: content.whyUs.items.filter((i) => s(i.title) || s(i.description)),
@@ -469,6 +476,84 @@ export function ContentEditor() {
             />
           </div>
         )}
+
+        {tab === "Before / After" &&
+          (() => {
+            const ba: NonNullable<SiteContent["beforeAfter"]> =
+              content.beforeAfter ?? { title: "", subtitle: "", items: [] };
+            const update = (b: NonNullable<SiteContent["beforeAfter"]>) =>
+              setContent({ ...content, beforeAfter: b });
+            return (
+              <div className="space-y-6">
+                <p className="text-sm text-cream/55">
+                  Upload a &ldquo;before&rdquo; and an &ldquo;after&rdquo; photo of the same car.
+                  Visitors drag a slider to reveal the transformation. Leave this empty to hide the
+                  section.
+                </p>
+                <Field label="Section Title">
+                  <TextInput value={ba.title} onChange={(v) => update({ ...ba, title: v })} />
+                </Field>
+                <Field label="Subtitle">
+                  <TextArea value={ba.subtitle} onChange={(v) => update({ ...ba, subtitle: v })} />
+                </Field>
+                <div className="space-y-4">
+                  {ba.items.map((item, i) => (
+                    <div key={item.id} className="rounded-xl border border-gold/15 p-5">
+                      <Field label="Caption (e.g. Full Interior Restoration)">
+                        <TextInput
+                          value={item.label}
+                          onChange={(v) => {
+                            const items = [...ba.items];
+                            items[i] = { ...items[i], label: v };
+                            update({ ...ba, items });
+                          }}
+                        />
+                      </Field>
+                      <div className="mt-4 grid gap-4 sm:grid-cols-2">
+                        <Field label="Before photo">
+                          <ImageUploader
+                            value={item.before ?? ""}
+                            onChange={(v) => {
+                              const items = [...ba.items];
+                              items[i] = { ...items[i], before: v };
+                              update({ ...ba, items });
+                            }}
+                          />
+                        </Field>
+                        <Field label="After photo">
+                          <ImageUploader
+                            value={item.after ?? ""}
+                            onChange={(v) => {
+                              const items = [...ba.items];
+                              items[i] = { ...items[i], after: v };
+                              update({ ...ba, items });
+                            }}
+                          />
+                        </Field>
+                      </div>
+                      <div className="mt-4">
+                        <RemoveButton
+                          onClick={() => update({ ...ba, items: ba.items.filter((_, idx) => idx !== i) })}
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <AddButton
+                  label="Add Before / After"
+                  onClick={() =>
+                    update({
+                      ...ba,
+                      items: [
+                        ...ba.items,
+                        { id: `ba-${Date.now()}`, label: "", before: "", after: "" },
+                      ],
+                    })
+                  }
+                />
+              </div>
+            );
+          })()}
 
         {tab === "Why Us" && (
           <div className="space-y-6">

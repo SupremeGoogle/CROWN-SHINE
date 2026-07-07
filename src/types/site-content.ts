@@ -53,6 +53,11 @@ export interface SiteContent {
     subtitle: string;
     items: { id: string; caption: string; tag: string; image?: string }[];
   };
+  beforeAfter?: {
+    title: string;
+    subtitle: string;
+    items: { id: string; label: string; before?: string; after?: string }[];
+  };
   whyUs: {
     title: string;
     items: { icon: WhyUsIcon; title: string; description: string }[];

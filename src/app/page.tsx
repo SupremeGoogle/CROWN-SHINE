@@ -7,6 +7,7 @@ import { Hero } from "@/components/sections/Hero";
 import { About } from "@/components/sections/About";
 import { Services } from "@/components/sections/Services";
 import { Gallery } from "@/components/sections/Gallery";
+import { BeforeAfter } from "@/components/sections/BeforeAfter";
 import { WhyUs } from "@/components/sections/WhyUs";
 import { ServiceArea } from "@/components/sections/ServiceArea";
 import { Testimonials } from "@/components/sections/Testimonials";
@@ -26,6 +27,7 @@ export default async function Home() {
         <About about={content.about} />
         <Services services={content.services} />
         <Gallery gallery={content.gallery} />
+        {content.beforeAfter && <BeforeAfter beforeAfter={content.beforeAfter} />}
         <WhyUs whyUs={content.whyUs} />
         <ServiceArea area={content.serviceArea} />
         <Testimonials testimonials={content.testimonials} />

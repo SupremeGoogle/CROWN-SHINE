@@ -73,6 +73,22 @@ export const siteContentSchema = z.object({
       )
       .max(24),
   }),
+  beforeAfter: z
+    .object({
+      title: z.string().trim().max(200),
+      subtitle: z.string().trim().max(400),
+      items: z
+        .array(
+          z.object({
+            id: z.string(),
+            label: z.string().trim().max(120),
+            before: z.string().trim().max(500).optional().or(z.literal("")),
+            after: z.string().trim().max(500).optional().or(z.literal("")),
+          })
+        )
+        .max(24),
+    })
+    .optional(),
   whyUs: z.object({
     title: z.string().trim().min(1).max(200),
     items: z
