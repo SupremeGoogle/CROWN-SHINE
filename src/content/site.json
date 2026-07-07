@@ -43,53 +43,6 @@
       ]
     },
     {
-      "id": "signature-detail",
-      "name": "Complete Shine Detail",
-      "price": "From 270$",
-      "duration": "~4 hours",
-      "description": "Our most popular package — an interior and exterior detail for a true crown-level shine.",
-      "features": [
-        "Everything in Express Shine",
-        "Everything in Interior Shine"
-      ],
-      "highlighted": true
-    },
-    {
-      "id": "full-royal-detail",
-      "name": "Full Royal Detail",
-      "price": "From 999$",
-      "duration": "Full day",
-      "description": "The ultimate transformation — showroom-level correction inside and out.",
-      "features": [
-        "Everything in Express Shine",
-        "Engine bay detailing",
-        "Ceramic spray sealant",
-        "Iron remover & clay bar decontamination",
-        "Bug & tar removal",
-        "One-step paint enhancement polish",
-        "Everything in Deep Interior Shine",
-        "Odor treatment",
-        "Ozone treatment to eliminate odors + cabin air filter replacement",
-        "Headlight Clarity Restoration"
-      ],
-      "highlighted": true
-    },
-    {
-      "id": "ceramic-coating",
-      "name": "Crown Ceramic Coating",
-      "price": "From 999$",
-      "duration": "Full day",
-      "description": "Long-term paint protection with a deep, glass-like gloss that lasts for years.",
-      "features": [
-        "Paint decontamination",
-        "Multi-stage paint correction",
-        "Professional-grade ceramic coating 1-7 years",
-        "Everything in Express Shine",
-        "Premium Ceramic Coating 1–7 Year"
-      ],
-      "highlighted": true
-    },
-    {
       "id": "service-1783188224136",
       "name": "Interior Shine",
       "price": "From 180$",
@@ -125,6 +78,38 @@
       "highlighted": true
     },
     {
+      "id": "signature-detail",
+      "name": "Complete Shine Detail",
+      "price": "From 270$",
+      "duration": "~4 hours",
+      "description": "Our most popular package — an interior and exterior detail for a true crown-level shine.",
+      "features": [
+        "Everything in Express Shine",
+        "Everything in Interior Shine"
+      ],
+      "highlighted": true
+    },
+    {
+      "id": "full-royal-detail",
+      "name": "Full Royal Detail",
+      "price": "From 999$",
+      "duration": "Full day",
+      "description": "The ultimate transformation — showroom-level correction inside and out.",
+      "features": [
+        "Everything in Express Shine",
+        "Engine bay detailing",
+        "Ceramic spray sealant",
+        "Iron remover & clay bar decontamination",
+        "Bug & tar removal",
+        "One-step paint enhancement polish",
+        "Everything in Deep Interior Shine",
+        "Odor treatment",
+        "Ozone treatment to eliminate odors + cabin air filter replacement",
+        "Headlight Clarity Restoration"
+      ],
+      "highlighted": true
+    },
+    {
       "id": "service-1783272595566",
       "name": "Royal Shine Polish",
       "price": "From 599$",
@@ -138,6 +123,21 @@
         "Multi-stage paint correction",
         "Ceramic spray sealant"
       ]
+    },
+    {
+      "id": "ceramic-coating",
+      "name": "Crown Ceramic Coating",
+      "price": "From 999$",
+      "duration": "Full day",
+      "description": "Long-term paint protection with a deep, glass-like gloss that lasts for years.",
+      "features": [
+        "Paint decontamination",
+        "Multi-stage paint correction",
+        "Professional-grade ceramic coating 1-7 years",
+        "Everything in Express Shine",
+        "Premium Ceramic Coating 1–7 Year"
+      ],
+      "highlighted": true
     }
   ],
   "vehicleTypes": [
