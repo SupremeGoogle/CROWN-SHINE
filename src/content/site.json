@@ -75,7 +75,7 @@
         "Pet hair removal",
         "Odor reduction treatment"
       ],
-      "highlighted": true
+      "highlighted": false
     },
     {
       "id": "signature-detail",
@@ -107,7 +107,7 @@
         "Ozone treatment to eliminate odors + cabin air filter replacement",
         "Headlight Clarity Restoration"
       ],
-      "highlighted": true
+      "highlighted": false
     },
     {
       "id": "service-1783272595566",
