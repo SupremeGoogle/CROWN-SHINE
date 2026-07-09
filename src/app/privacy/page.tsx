@@ -14,7 +14,7 @@ export default async function PrivacyPolicyPage() {
   return (
     <LegalPage title="Privacy Policy" updated="July 2, 2026" content={content}>
       <p>
-        Crown Shine Mobile Detailing (&quot;Crown Shine,&quot; &quot;we,&quot; &quot;us,&quot; or
+        Crown Shine Mobile Detailing LLC (&quot;Crown Shine,&quot; &quot;we,&quot; &quot;us,&quot; or
         &quot;our&quot;) provides mobile car detailing services to customers in Seattle,
         Bellevue, Kirkland, Redmond, Issaquah, and other nearby areas in Washington State. This
         Privacy Policy explains how we collect, use, share, and protect information when you

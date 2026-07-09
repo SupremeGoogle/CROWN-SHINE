@@ -71,7 +71,7 @@ export default async function LinksPage() {
         </div>
 
         <p className="mt-10 text-center text-xs text-cream/40">
-          © {new Date().getFullYear()} Crown Shine Mobile Detailing
+          © {new Date().getFullYear()} Crown Shine Mobile Detailing LLC
         </p>
       </div>
     </div>

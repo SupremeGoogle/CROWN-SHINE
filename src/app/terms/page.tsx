@@ -16,9 +16,8 @@ export default async function TermsPage() {
       <p>
         These Terms of Service (&quot;Terms&quot;) govern your use of the Crown Shine Mobile
         Detailing website and booking system, and your purchase of detailing services from
-        Crown Shine Mobile LLC, doing business as Crown Shine Mobile Detailing (&quot;Crown
-        Shine,&quot; &quot;we,&quot; &quot;us&quot;). By booking an appointment with us, you agree
-        to these Terms.
+        Crown Shine Mobile Detailing LLC (&quot;Crown Shine,&quot; &quot;we,&quot;
+        &quot;us&quot;). By booking an appointment with us, you agree to these Terms.
       </p>
 
       <LegalSection title="1. Our Services">

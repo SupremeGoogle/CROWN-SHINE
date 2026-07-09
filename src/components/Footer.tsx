@@ -87,7 +87,7 @@ export function Footer({ content }: { content: SiteContent }) {
       </div>
 
       <div className="mx-auto mt-10 max-w-6xl border-t border-gold/10 pt-6 text-center text-xs text-cream/40">
-        © {new Date().getFullYear()} Crown Shine Mobile Detailing. All rights reserved.
+        © {new Date().getFullYear()} Crown Shine Mobile Detailing LLC. All rights reserved.
       </div>
     </footer>
   );
