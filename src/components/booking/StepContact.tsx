@@ -104,6 +104,9 @@ export function StepContact({
       </div>
 
       <div className="mt-8 space-y-3 border-t border-gold/15 pt-6">
+        <p className="text-xs font-semibold uppercase tracking-widest text-gold/70">
+          Optional — marketing consent
+        </p>
         <label className="flex items-start gap-3 text-sm text-cream/75">
           <input
             type="checkbox"
@@ -113,8 +116,8 @@ export function StepContact({
             }
             className="mt-0.5 h-4 w-4 accent-[var(--color-gold)]"
           />
-          Yes, I&apos;d like to receive promotions, offers, and updates from Crown Shine by email.
-          I can unsubscribe at any time.
+          Yes, I&apos;d like to receive promotions, offers, and updates from Crown Shine Mobile
+          Detailing LLC by email. I can unsubscribe at any time.
         </label>
         <label className="flex items-start gap-3 text-sm text-cream/75">
           <input
@@ -123,17 +126,27 @@ export function StepContact({
             onChange={(e) => onChange({ ...value, marketingSmsConsent: e.target.checked })}
             className="mt-0.5 h-4 w-4 accent-[var(--color-gold)]"
           />
-          Yes, I agree to receive promotional text messages from Crown Shine at the number above.
-          Consent is not a condition of purchase. Message &amp; data rates may apply; reply STOP to
-          opt out.
+          <span>
+            Yes, I agree to receive recurring automated promotional text messages from Crown Shine
+            Mobile Detailing LLC at the phone number provided.{" "}
+            <span className="text-cream/55">
+              Consent is not a condition of purchase. Msg frequency varies. Msg &amp; data rates
+              may apply. Reply STOP to opt out, HELP for help.
+            </span>
+          </span>
         </label>
         <p className="text-xs text-cream/45">
-          We&apos;ll only use your info to schedule and confirm this appointment, plus
-          marketing you&apos;ve opted into above. See our{" "}
+          Even if you don&apos;t opt in above, we may still contact you by phone, text, or email to
+          schedule and confirm this specific appointment. By submitting this booking you confirm the
+          details are accurate and agree to our{" "}
+          <Link href="/terms" className="underline hover:text-gold">
+            Terms of Service
+          </Link>{" "}
+          and{" "}
           <Link href="/privacy" className="underline hover:text-gold">
             Privacy Policy
-          </Link>{" "}
-          for details.
+          </Link>
+          .
         </p>
       </div>
     </div>

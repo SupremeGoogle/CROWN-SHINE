@@ -12,7 +12,7 @@ export default async function TermsPage() {
   const { phone } = content.contact;
 
   return (
-    <LegalPage title="Terms of Service" updated="July 2, 2026" content={content}>
+    <LegalPage title="Terms of Service" updated="July 9, 2026" content={content}>
       <p>
         These Terms of Service (&quot;Terms&quot;) govern your use of the Crown Shine Mobile
         Detailing website and booking system, and your purchase of detailing services from
@@ -86,28 +86,45 @@ export default async function TermsPage() {
         </p>
       </LegalSection>
 
-      <LegalSection title="8. Website Use">
+      <LegalSection title="8. SMS / Text Messaging">
         <p>
-          The content, design, and branding of this website are the property of Crown Shine
-          Mobile Detailing and may not be copied or used without permission.
+          If you provide your phone number and opt in, you agree to receive recurring automated and
+          manual text messages from Crown Shine Mobile Detailing LLC at that number. These may
+          include appointment-related messages (such as confirmations and reminders) and, where you
+          have separately consented, promotional offers.
+        </p>
+        <p>
+          Consent to receive marketing text messages is{" "}
+          <strong>not a condition of purchasing</strong> any goods or services. Message frequency
+          varies. Message and data rates may apply. You can opt out at any time by replying{" "}
+          <strong>STOP</strong> to any message, or reply <strong>HELP</strong> for help. Mobile
+          carriers are not liable for delayed or undelivered messages. See our Privacy Policy for
+          how we handle your information.
         </p>
       </LegalSection>
 
-      <LegalSection title="9. Governing Law">
+      <LegalSection title="9. Website Use">
+        <p>
+          The content, design, and branding of this website are the property of Crown Shine
+          Mobile Detailing LLC and may not be copied or used without permission.
+        </p>
+      </LegalSection>
+
+      <LegalSection title="10. Governing Law">
         <p>
           These Terms are governed by the laws of the State of Washington, without regard to its
           conflict of law principles.
         </p>
       </LegalSection>
 
-      <LegalSection title="10. Changes to These Terms">
+      <LegalSection title="11. Changes to These Terms">
         <p>
           We may update these Terms from time to time. Continued use of our website or services
           after changes are posted means you accept the updated Terms.
         </p>
       </LegalSection>
 
-      <LegalSection title="11. Contact Us">
+      <LegalSection title="12. Contact Us">
         <p>
           Questions about these Terms? Reach us by phone at{" "}
           <a href={`tel:${phone.replace(/[^\d+]/g, "")}`} className="text-gold underline hover:text-gold-light">

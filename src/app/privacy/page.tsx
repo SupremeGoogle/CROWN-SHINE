@@ -12,7 +12,7 @@ export default async function PrivacyPolicyPage() {
   const { phone } = content.contact;
 
   return (
-    <LegalPage title="Privacy Policy" updated="July 2, 2026" content={content}>
+    <LegalPage title="Privacy Policy" updated="July 9, 2026" content={content}>
       <p>
         Crown Shine Mobile Detailing LLC (&quot;Crown Shine,&quot; &quot;we,&quot; &quot;us,&quot; or
         &quot;our&quot;) provides mobile car detailing services to customers in Seattle,
@@ -67,6 +67,10 @@ export default async function PrivacyPolicyPage() {
           Regardless of your marketing preferences, we may still contact you with transactional
           messages related to an appointment you&apos;ve booked (e.g. confirmations or
           scheduling changes).
+        </p>
+        <p>
+          We do not sell or share your mobile phone number or SMS opt-in consent with any third
+          parties or affiliates for their own marketing or promotional purposes.
         </p>
       </LegalSection>
 
