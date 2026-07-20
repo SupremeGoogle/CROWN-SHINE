@@ -22,6 +22,10 @@ export interface ServicePackage {
 }
 
 export interface SiteContent {
+  seo?: {
+    title?: string;
+    description?: string;
+  };
   hero: {
     eyebrow: string;
     title: string;

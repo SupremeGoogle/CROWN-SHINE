@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { getSiteContent } from "@/lib/content";
 import { LoadingScreen } from "@/components/ui/LoadingScreen";
 import { CrownPattern } from "@/components/CrownPattern";
@@ -13,6 +14,17 @@ import { ServiceArea } from "@/components/sections/ServiceArea";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { Faq } from "@/components/sections/Faq";
 import { BookingWizard } from "@/components/booking/BookingWizard";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const { seo } = await getSiteContent();
+  const meta: Metadata = {};
+  if (seo?.title) meta.title = { absolute: seo.title };
+  if (seo?.description) {
+    meta.description = seo.description;
+    meta.openGraph = { title: seo.title, description: seo.description, type: "website" };
+  }
+  return meta;
+}
 
 export default async function Home() {
   const content = await getSiteContent();

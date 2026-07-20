@@ -30,6 +30,7 @@ const TABS = [
   "FAQ",
   "Contact",
   "Links",
+  "SEO",
 ] as const;
 
 function swap<T>(arr: T[], a: number, b: number): T[] {
@@ -983,6 +984,37 @@ export function ContentEditor() {
               </div>
             );
           })()}
+
+        {tab === "SEO" && (
+          <div className="space-y-6">
+            <p className="text-sm text-cream/55">
+              This controls how your site looks in Google search results and when shared on social
+              media. Keep the description short and inviting — Google shows about 155 characters.
+            </p>
+            <Field label="Search Title (browser tab & Google headline)">
+              <TextInput
+                value={content.seo?.title ?? ""}
+                placeholder="Crown Shine Mobile Detailing — Luxury Car Detailing in Seattle"
+                onChange={(v) => setContent({ ...content, seo: { ...content.seo, title: v } })}
+              />
+            </Field>
+            <Field label="Search Description (the grey text under the title in Google)">
+              <TextArea
+                rows={3}
+                value={content.seo?.description ?? ""}
+                placeholder="Mobile car detailing that comes to you across Seattle & the Eastside. Interior, exterior, ceramic coating & paint correction from $90. Book online."
+                onChange={(v) =>
+                  setContent({ ...content, seo: { ...content.seo, description: v } })
+                }
+              />
+            </Field>
+            <p className="text-xs text-cream/40">
+              Note: Google may take a few days to a couple of weeks to update what it shows, and it
+              sometimes builds its own snippet from page text. A clear description here gives it the
+              best material to use.
+            </p>
+          </div>
+        )}
       </GlassCard>
     </div>
   );

@@ -12,6 +12,12 @@ export const servicePackageSchema = z.object({
 });
 
 export const siteContentSchema = z.object({
+  seo: z
+    .object({
+      title: z.string().trim().max(70).optional().or(z.literal("")),
+      description: z.string().trim().max(200).optional().or(z.literal("")),
+    })
+    .optional(),
   hero: z.object({
     eyebrow: z.string().trim().min(1).max(100),
     title: z.string().trim().min(1).max(200),
